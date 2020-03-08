@@ -1,0 +1,433 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 384
+  Width = 474
+  object IBDatabase1: TIBDatabase
+    Connected = True
+    DatabaseName = 'C:\Users\timic\Desktop\Alfa-Garant\DATA'
+    Params.Strings = (
+      'user_name=SYSDBA'
+      'password=masterkey'
+      'lc_ctype=WIN1251')
+    LoginPrompt = False
+    DefaultTransaction = IBTransaction1
+    ServerType = 'IBServer'
+    Left = 240
+    Top = 24
+  end
+  object IBTransaction1: TIBTransaction
+    Active = True
+    DefaultDatabase = IBDatabase1
+    Left = 240
+    Top = 80
+  end
+  object AVTO_KLIENTA_DataSet1: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from AVTO_KLIENTA'
+      'where'
+      '  KOD_AVTO = :OLD_KOD_AVTO and'
+      '  KOD_KLIENTA = :OLD_KOD_KLIENTA and'
+      '  KOD_MARK = :OLD_KOD_MARK and'
+      '  KOD_TIPI = :OLD_KOD_TIPI and'
+      '  KOD_MESTO = :OLD_KOD_MESTO')
+    InsertSQL.Strings = (
+      'insert into AVTO_KLIENTA'
+      '  (OBIEM_DVIG, MODEL_AVTO, NOMER_AVTO, RIK, VIN)'
+      'values'
+      '  (:OBIEM_DVIG, :MODEL_AVTO, :NOMER_AVTO, :RIK, :VIN)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  KOD_AVTO,'
+      '  KOD_KLIENTA,'
+      '  KOD_MARK,'
+      '  KOD_TIPI,'
+      '  KOD_MESTO,'
+      '  OBIEM_DVIG,'
+      '  MODEL_AVTO,'
+      '  NOMER_AVTO,'
+      '  RIK,'
+      '  VIN'
+      'from AVTO_KLIENTA '
+      'where'
+      '  KOD_AVTO = :KOD_AVTO and'
+      '  KOD_KLIENTA = :KOD_KLIENTA and'
+      '  KOD_MARK = :KOD_MARK and'
+      '  KOD_TIPI = :KOD_TIPI and'
+      '  KOD_MESTO = :KOD_MESTO')
+    SelectSQL.Strings = (
+      'select * from AVTO_KLIENTA')
+    ModifySQL.Strings = (
+      'update AVTO_KLIENTA'
+      'set'
+      '  OBIEM_DVIG = :OBIEM_DVIG,'
+      '  MODEL_AVTO = :MODEL_AVTO,'
+      '  NOMER_AVTO = :NOMER_AVTO,'
+      '  RIK = :RIK,'
+      '  VIN = :VIN'
+      'where'
+      '  KOD_AVTO = :OLD_KOD_AVTO and'
+      '  KOD_KLIENTA = :OLD_KOD_KLIENTA and'
+      '  KOD_MARK = :OLD_KOD_MARK and'
+      '  KOD_TIPI = :OLD_KOD_TIPI and'
+      '  KOD_MESTO = :OLD_KOD_MESTO')
+    ParamCheck = True
+    UniDirectional = False
+    GeneratorField.Field = 'KOD_AVTO'
+    GeneratorField.Generator = 'GEN_AVTO_KLIENTA_ID'
+    Left = 64
+    Top = 144
+  end
+  object Klient_DataSet2: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from KLIENT'
+      'where'
+      '  KOD_KLIENTA = :OLD_KOD_KLIENTA')
+    InsertSQL.Strings = (
+      'insert into KLIENT'
+      
+        '  (FAMILIA, IMA, OCHESTVO, DATA_ROSHDENIA, INN, TIP, REZIDENT, S' +
+        'ERIA, NOMER, '
+      '   KEM_VIDAN, PRIMECHANIE)'
+      'values'
+      
+        '  (:FAMILIA, :IMA, :OCHESTVO, :DATA_ROSHDENIA, :INN, :TIP, :REZI' +
+        'DENT, :SERIA, '
+      '   :NOMER, :KEM_VIDAN, :PRIMECHANIE)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  KOD_KLIENTA,'
+      '  FAMILIA,'
+      '  IMA,'
+      '  OCHESTVO,'
+      '  DATA_ROSHDENIA,'
+      '  INN,'
+      '  TIP,'
+      '  REZIDENT,'
+      '  SERIA,'
+      '  NOMER,'
+      '  KEM_VIDAN,'
+      '  PRIMECHANIE'
+      'from KLIENT '
+      'where'
+      '  KOD_KLIENTA = :KOD_KLIENTA')
+    SelectSQL.Strings = (
+      'select * from KLIENT')
+    ModifySQL.Strings = (
+      'update KLIENT'
+      'set'
+      '  FAMILIA = :FAMILIA,'
+      '  IMA = :IMA,'
+      '  OCHESTVO = :OCHESTVO,'
+      '  DATA_ROSHDENIA = :DATA_ROSHDENIA,'
+      '  INN = :INN,'
+      '  TIP = :TIP,'
+      '  REZIDENT = :REZIDENT,'
+      '  SERIA = :SERIA,'
+      '  NOMER = :NOMER,'
+      '  KEM_VIDAN = :KEM_VIDAN,'
+      '  PRIMECHANIE = :PRIMECHANIE'
+      'where'
+      '  KOD_KLIENTA = :OLD_KOD_KLIENTA')
+    ParamCheck = True
+    UniDirectional = False
+    GeneratorField.Field = 'KOD_KLIENTA'
+    GeneratorField.Generator = 'GEN_KLIENT_ID'
+    Left = 184
+    Top = 144
+  end
+  object MARKI_DataSet3: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from MARKI'
+      'where'
+      '  KOD_MARK = :OLD_KOD_MARK')
+    InsertSQL.Strings = (
+      'insert into MARKI'
+      '  (NAZV_MARKA)'
+      'values'
+      '  (:NAZV_MARKA)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  KOD_MARK,'
+      '  NAZV_MARKA'
+      'from MARKI '
+      'where'
+      '  KOD_MARK = :KOD_MARK')
+    SelectSQL.Strings = (
+      'select * from MARKI')
+    ModifySQL.Strings = (
+      'update MARKI'
+      'set'
+      '  NAZV_MARKA = :NAZV_MARKA'
+      'where'
+      '  KOD_MARK = :OLD_KOD_MARK')
+    ParamCheck = True
+    UniDirectional = False
+    GeneratorField.Field = 'KOD_MARK'
+    GeneratorField.Generator = 'GEN_MARKI_ID'
+    Left = 304
+    Top = 144
+  end
+  object MESTO_REG_DataSet4: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from MESTO_REG'
+      'where'
+      '  KOD_MESTO = :OLD_KOD_MESTO')
+    InsertSQL.Strings = (
+      'insert into MESTO_REG'
+      '  (NAZVA_MESTA, ZONA)'
+      'values'
+      '  (:NAZVA_MESTA, :ZONA)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  KOD_MESTO,'
+      '  NAZVA_MESTA,'
+      '  ZONA'
+      'from MESTO_REG '
+      'where'
+      '  KOD_MESTO = :KOD_MESTO')
+    SelectSQL.Strings = (
+      'select * from MESTO_REG')
+    ModifySQL.Strings = (
+      'update MESTO_REG'
+      'set'
+      '  NAZVA_MESTA = :NAZVA_MESTA,'
+      '  ZONA = :ZONA'
+      'where'
+      '  KOD_MESTO = :OLD_KOD_MESTO')
+    ParamCheck = True
+    UniDirectional = False
+    GeneratorField.Field = 'KOD_MESTO'
+    GeneratorField.Generator = 'GEN_MESTO_REG_ID'
+    Left = 416
+    Top = 144
+  end
+  object POLIS_DataSet5: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from POLIS'
+      'where'
+      '  KOD_POLISA = :OLD_KOD_POLISA and'
+      '  KOD_PRED = :OLD_KOD_PRED and'
+      '  KOD_KLIENTA = :OLD_KOD_KLIENTA and'
+      '  KOD_AVTO = :OLD_KOD_AVTO')
+    InsertSQL.Strings = (
+      'insert into POLIS'
+      
+        '  (SERIA_POLISA, NOMER_POLISA, OT, MESATI, TERMIN_DEISTVIA, S, P' +
+        'O, STASH, '
+      
+        '   TAXI, OTK, DATE_OTK, FRANSHIZA, PLATISH, PRIMECHANIE, BONUS_M' +
+        'ALUS, CKIDKA, '
+      '   STATUS)'
+      'values'
+      
+        '  (:SERIA_POLISA, :NOMER_POLISA, :OT, :MESATI, :TERMIN_DEISTVIA,' +
+        ' :S, :PO, '
+      
+        '   :STASH, :TAXI, :OTK, :DATE_OTK, :FRANSHIZA, :PLATISH, :PRIMEC' +
+        'HANIE, '
+      '   :BONUS_MALUS, :CKIDKA, :STATUS)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  KOD_POLISA,'
+      '  KOD_PRED,'
+      '  KOD_KLIENTA,'
+      '  KOD_AVTO,'
+      '  SERIA_POLISA,'
+      '  NOMER_POLISA,'
+      '  OT,'
+      '  MESATI,'
+      '  TERMIN_DEISTVIA,'
+      '  S,'
+      '  PO,'
+      '  STASH,'
+      '  TAXI,'
+      '  OTK,'
+      '  DATE_OTK,'
+      '  FRANSHIZA,'
+      '  PLATISH,'
+      '  PRIMECHANIE,'
+      '  BONUS_MALUS,'
+      '  CKIDKA,'
+      '  STATUS'
+      'from POLIS '
+      'where'
+      '  KOD_POLISA = :KOD_POLISA and'
+      '  KOD_PRED = :KOD_PRED and'
+      '  KOD_KLIENTA = :KOD_KLIENTA and'
+      '  KOD_AVTO = :KOD_AVTO')
+    SelectSQL.Strings = (
+      'select * from POLIS')
+    ModifySQL.Strings = (
+      'update POLIS'
+      'set'
+      '  SERIA_POLISA = :SERIA_POLISA,'
+      '  NOMER_POLISA = :NOMER_POLISA,'
+      '  OT = :OT,'
+      '  MESATI = :MESATI,'
+      '  TERMIN_DEISTVIA = :TERMIN_DEISTVIA,'
+      '  S = :S,'
+      '  PO = :PO,'
+      '  STASH = :STASH,'
+      '  TAXI = :TAXI,'
+      '  OTK = :OTK,'
+      '  DATE_OTK = :DATE_OTK,'
+      '  FRANSHIZA = :FRANSHIZA,'
+      '  PLATISH = :PLATISH,'
+      '  PRIMECHANIE = :PRIMECHANIE,'
+      '  BONUS_MALUS = :BONUS_MALUS,'
+      '  CKIDKA = :CKIDKA,'
+      '  STATUS = :STATUS'
+      'where'
+      '  KOD_POLISA = :OLD_KOD_POLISA and'
+      '  KOD_PRED = :OLD_KOD_PRED and'
+      '  KOD_KLIENTA = :OLD_KOD_KLIENTA and'
+      '  KOD_AVTO = :OLD_KOD_AVTO')
+    ParamCheck = True
+    UniDirectional = False
+    GeneratorField.Field = 'KOD_POLISA'
+    GeneratorField.Generator = 'GEN_POLIS_ID'
+    Left = 64
+    Top = 256
+  end
+  object PRESTAVNIKI_DataSet6: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from PREDSTAVNIKI'
+      'where'
+      '  KOD_PRED = :OLD_KOD_PRED')
+    InsertSQL.Strings = (
+      'insert into PREDSTAVNIKI'
+      
+        '  (FAMILIA, IMYA, OTCHESTVO, LOGIN, PAROL, E-MAIL, TELEPHONE, PR' +
+        'IMECHANIE)'
+      'values'
+      
+        '  (:FAMILIA, :IMYA, :OTCHESTVO, :LOGIN, :PAROL, :E-MAIL, :TELEPH' +
+        'ONE, :PRIMECHANIE)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  KOD_PRED,'
+      '  FAMILIA,'
+      '  IMYA,'
+      '  OTCHESTVO,'
+      '  LOGIN,'
+      '  PAROL,'
+      '  E-MAIL,'
+      '  TELEPHONE,'
+      '  PRIMECHANIE'
+      'from PREDSTAVNIKI '
+      'where'
+      '  KOD_PRED = :KOD_PRED')
+    SelectSQL.Strings = (
+      'select * from PREDSTAVNIKI')
+    ModifySQL.Strings = (
+      'update PREDSTAVNIKI'
+      'set'
+      '  FAMILIA = :FAMILIA,'
+      '  IMYA = :IMYA,'
+      '  OTCHESTVO = :OTCHESTVO,'
+      '  LOGIN = :LOGIN,'
+      '  PAROL = :PAROL,'
+      '  E-MAIL = :E-MAIL,'
+      '  TELEPHONE = :TELEPHONE,'
+      '  PRIMECHANIE = :PRIMECHANIE'
+      'where'
+      '  KOD_PRED = :OLD_KOD_PRED')
+    ParamCheck = True
+    UniDirectional = False
+    GeneratorField.Field = 'KOD_PRED'
+    GeneratorField.Generator = 'GEN_PREDSTAVNIKI_ID'
+    Left = 184
+    Top = 256
+  end
+  object TIPI_TZ_DataSet7: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from TIPI_TZ'
+      'where'
+      '  KOD_TIPI = :OLD_KOD_TIPI')
+    InsertSQL.Strings = (
+      'insert into TIPI_TZ'
+      '  (TZ, TIP)'
+      'values'
+      '  (:TZ, :TIP)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  KOD_TIPI,'
+      '  TZ,'
+      '  TIP'
+      'from TIPI_TZ '
+      'where'
+      '  KOD_TIPI = :KOD_TIPI')
+    SelectSQL.Strings = (
+      'select * from TIPI_TZ')
+    ModifySQL.Strings = (
+      'update TIPI_TZ'
+      'set'
+      '  TZ = :TZ,'
+      '  TIP = :TIP'
+      'where'
+      '  KOD_TIPI = :OLD_KOD_TIPI')
+    ParamCheck = True
+    UniDirectional = False
+    GeneratorField.Field = 'KOD_TIPI'
+    GeneratorField.Generator = 'GEN_TIPI_TZ_ID'
+    Left = 304
+    Top = 256
+  end
+  object DataSource1: TDataSource
+    DataSet = AVTO_KLIENTA_DataSet1
+    Left = 64
+    Top = 192
+  end
+  object DataSource2: TDataSource
+    Left = 184
+    Top = 192
+  end
+  object DataSource3: TDataSource
+    Left = 304
+    Top = 192
+  end
+  object DataSource4: TDataSource
+    Left = 416
+    Top = 192
+  end
+  object DataSource5: TDataSource
+    Left = 64
+    Top = 304
+  end
+  object DataSource6: TDataSource
+    Left = 184
+    Top = 304
+  end
+  object DataSource7: TDataSource
+    Left = 304
+    Top = 304
+  end
+end

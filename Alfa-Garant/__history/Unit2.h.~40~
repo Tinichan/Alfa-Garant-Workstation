@@ -1,0 +1,123 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit2H
+#define Unit2H
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Data.DB.hpp>
+#include <IBX.IBDatabase.hpp>
+#include <IBX.IBCustomDataSet.hpp>
+#include <IBX.IBQuery.hpp>
+//---------------------------------------------------------------------------
+class TDM : public TDataModule
+{
+__published:	// IDE-managed Components
+	TIBDatabase *IBDatabase1;
+	TIBTransaction *IBTransaction1;
+	TIBDataSet *AVTO_KLIENTA_DataSet1;
+	TIBDataSet *KLIENT_DataSet2;
+	TIBDataSet *MARKI_DataSet3;
+	TIBDataSet *MESTO_REG_DataSet4;
+	TIBDataSet *POLIS_DataSet5;
+	TIBDataSet *PRESTAVNIKI_DataSet6;
+	TIBDataSet *TIPI_TZ_DataSet7;
+	TDataSource *DataSource1;
+	TDataSource *DataSource2;
+	TDataSource *DataSource3;
+	TDataSource *DataSource4;
+	TDataSource *DataSource5;
+	TDataSource *DataSource6;
+	TDataSource *DataSource7;
+	TIBQuery *IBQuery6;
+	TIntegerField *MARKI_DataSet3KOD_MARK;
+	TIBStringField *MARKI_DataSet3NAZV_MARKA;
+	TIntegerField *MESTO_REG_DataSet4KOD_MESTO;
+	TIBStringField *MESTO_REG_DataSet4NAZVA_MESTA;
+	TIBStringField *MESTO_REG_DataSet4ZONA;
+	TIntegerField *TIPI_TZ_DataSet7KOD_TIPI;
+	TIBStringField *TIPI_TZ_DataSet7TZ;
+	TIBStringField *TIPI_TZ_DataSet7TIP;
+	TIntegerField *AVTO_KLIENTA_DataSet1KOD_AVTO;
+	TIntegerField *AVTO_KLIENTA_DataSet1KOD_KLIENTA_FK;
+	TIntegerField *AVTO_KLIENTA_DataSet1KOD_TIPI_FK;
+	TIntegerField *AVTO_KLIENTA_DataSet1KOD_MESTO_FK;
+	TIBStringField *AVTO_KLIENTA_DataSet1MODEL_AVTO;
+	TIBStringField *AVTO_KLIENTA_DataSet1NOMER_AVTO;
+	TIBStringField *AVTO_KLIENTA_DataSet1RIK;
+	TIBStringField *AVTO_KLIENTA_DataSet1VIN;
+	TStringField *AVTO_KLIENTA_DataSet1Nazv_mark;
+	TStringField *AVTO_KLIENTA_DataSet1Nazv_tipa;
+	TStringField *AVTO_KLIENTA_DataSet1Nazv_mesta;
+	TIntegerField *KLIENT_DataSet2KOD_KLIENTA;
+	TIBStringField *KLIENT_DataSet2FIO_KLIENT;
+	TDateField *KLIENT_DataSet2DATA_ROSHDENIA;
+	TIBStringField *KLIENT_DataSet2INN;
+	TIBStringField *KLIENT_DataSet2TIP;
+	TIBStringField *KLIENT_DataSet2REZIDENT;
+	TIBStringField *KLIENT_DataSet2SERIA;
+	TIBStringField *KLIENT_DataSet2NOMER;
+	TIBStringField *KLIENT_DataSet2TELEPHONE;
+	TIBStringField *KLIENT_DataSet2KEM_VIDAN;
+	TIBStringField *KLIENT_DataSet2PRIMECHANIE;
+	TIntegerField *PRESTAVNIKI_DataSet6KOD_PRED;
+	TIBStringField *PRESTAVNIKI_DataSet6FIO_PREDSTAVNIKI;
+	TIBStringField *PRESTAVNIKI_DataSet6PAROL;
+	TIBStringField *PRESTAVNIKI_DataSet6E_MAIL;
+	TIBStringField *PRESTAVNIKI_DataSet6TELEPHONE;
+	TIBStringField *PRESTAVNIKI_DataSet6PRIMECHANIE;
+	TSmallintField *POLIS_DataSet5KOD_POLISA;
+	TIntegerField *POLIS_DataSet5KOD_PRED_FK;
+	TIntegerField *POLIS_DataSet5KOD_KLIENTA_FK;
+	TIntegerField *POLIS_DataSet5KOD_AVTO_FK;
+	TIBStringField *POLIS_DataSet5SERIA_POLISA;
+	TIBStringField *POLIS_DataSet5NOMER_POLISA;
+	TDateField *POLIS_DataSet5OT;
+	TIBStringField *POLIS_DataSet5TERMIN_DEISTVIA;
+	TDateField *POLIS_DataSet5S;
+	TDateField *POLIS_DataSet5PO;
+	TIBStringField *POLIS_DataSet5STASH;
+	TIBStringField *POLIS_DataSet5TAXI;
+	TIBStringField *POLIS_DataSet5OTK;
+	TDateField *POLIS_DataSet5DATA_OTK;
+	TIBStringField *POLIS_DataSet5FRANSHIZA;
+	TIBStringField *POLIS_DataSet5PLATISH;
+	TIBStringField *POLIS_DataSet5PRIMECHANIE;
+	TIBStringField *POLIS_DataSet5BONUS_MALUS;
+	TIBStringField *POLIS_DataSet5CKIDKA;
+	TIBStringField *POLIS_DataSet5STATUS;
+	TIBStringField *POLIS_DataSet5VSEGO_K_OPLATE;
+	TStringField *POLIS_DataSet5Nazv_pred;
+	TStringField *POLIS_DataSet5Nazv_klienta;
+	TStringField *POLIS_DataSet5Nazv_avto;
+	TIBStringField *PRESTAVNIKI_DataSet6DOLSHNOST;
+	TIBStringField *KLIENT_DataSet2ADRESS;
+	TStringField *AVTO_KLIENTA_DataSet1Kod_masta;
+	TIntegerField *IBQuery6KOD_PRED;
+	TIBStringField *IBQuery6FIO_PREDSTAVNIKI;
+	TIBStringField *IBQuery6PAROL;
+	TIBStringField *IBQuery6E_MAIL;
+	TIBStringField *IBQuery6TELEPHONE;
+	TIBStringField *IBQuery6DOLSHNOST;
+	TIBStringField *IBQuery6PRIMECHANIE;
+	TIntegerField *AVTO_KLIENTA_DataSet1KOD_MARK_FK;
+	TIBStringField *POLIS_DataSet5MESAT_1;
+	TIBStringField *POLIS_DataSet5MESAT_2;
+	TIBStringField *POLIS_DataSet5MESAT_3;
+	TIBStringField *POLIS_DataSet5MESAT_4;
+	TIBStringField *POLIS_DataSet5MESAT_5;
+	TIBStringField *POLIS_DataSet5MESAT_6;
+	TIBStringField *POLIS_DataSet5MESAT_7;
+	TIBStringField *POLIS_DataSet5MESAT_8;
+	TIBStringField *POLIS_DataSet5MESAT_9;
+	TIBStringField *POLIS_DataSet5MESAT_10;
+	TIBStringField *POLIS_DataSet5MESAT_11;
+	TIBStringField *POLIS_DataSet5MESAT_12;
+private:	// User declarations
+public:		// User declarations
+
+	__fastcall TDM(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TDM *DM;
+//---------------------------------------------------------------------------
+#endif

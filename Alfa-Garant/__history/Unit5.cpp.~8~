@@ -1,0 +1,38 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit5.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm5 *Form5;
+//---------------------------------------------------------------------------
+__fastcall TForm5::TForm5(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm5::FormClose(TObject *Sender, TCloseAction &Action)
+{
+Form1->N4->Enabled=true;
+Action=caFree;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm5::FormActivate(TObject *Sender)
+{
+DM->MESTO_REG_DataSet4->Close();
+DM->MESTO_REG_DataSet4->SelectSQL->Clear();
+DM->MESTO_REG_DataSet4->SelectSQL->Add("select * from MESTO_REG");
+DM->MESTO_REG_DataSet4->Open();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm5::Button1Click(TObject *Sender)
+{
+DM->MARKI_DataSet3->Locate("NAZV_MARKA",Edit1->Text,TLocateOptions()<<loPartialKey);
+}
+//---------------------------------------------------------------------------
+

@@ -1,0 +1,1052 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 383
+  Width = 504
+  object IBDatabase1: TIBDatabase
+    Connected = True
+    DatabaseName = 'C:\Users\timic\Desktop\Alfa-Garant\DATA'
+    Params.Strings = (
+      'user_name=SYSDBA'
+      'password=masterkey'
+      'lc_ctype=WIN1251')
+    LoginPrompt = False
+    DefaultTransaction = IBTransaction1
+    ServerType = 'IBServer'
+    Left = 240
+    Top = 24
+  end
+  object IBTransaction1: TIBTransaction
+    Active = True
+    DefaultDatabase = IBDatabase1
+    Left = 240
+    Top = 80
+  end
+  object AVTO_KLIENTA_DataSet1: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from AVTO_KLIENTA'
+      'where'
+      '  KOD_AVTO = :OLD_KOD_AVTO and'
+      '  KOD_KLIENTA_FK = :OLD_KOD_KLIENTA_FK and'
+      '  KOD_MARK_FK = :OLD_KOD_MARK_FK and'
+      '  KOD_TIPI_FK = :OLD_KOD_TIPI_FK and'
+      '  KOD_MESTO_FK = :OLD_KOD_MESTO_FK')
+    InsertSQL.Strings = (
+      'insert into AVTO_KLIENTA'
+      
+        '  (KOD_KLIENTA_FK, KOD_MARK_FK, KOD_TIPI_FK, KOD_MESTO_FK, MODEL' +
+        '_AVTO, '
+      '   NOMER_AVTO, RIK, VIN)'
+      'values'
+      
+        '  (:KOD_KLIENTA_FK, :KOD_MARK_FK, :KOD_TIPI_FK, :KOD_MESTO_FK, :' +
+        'MODEL_AVTO, '
+      '   :NOMER_AVTO, :RIK, :VIN)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  KOD_AVTO,'
+      '  KOD_KLIENTA_FK,'
+      '  KOD_MARK_FK,'
+      '  KOD_TIPI_FK,'
+      '  KOD_MESTO_FK,'
+      '  MODEL_AVTO,'
+      '  NOMER_AVTO,'
+      '  RIK,'
+      '  VIN'
+      'from AVTO_KLIENTA '
+      'where'
+      '  KOD_AVTO = :KOD_AVTO and'
+      '  KOD_KLIENTA_FK = :KOD_KLIENTA_FK and'
+      '  KOD_MARK_FK = :KOD_MARK_FK and'
+      '  KOD_TIPI_FK = :KOD_TIPI_FK and'
+      '  KOD_MESTO_FK = :KOD_MESTO_FK')
+    SelectSQL.Strings = (
+      'select * from AVTO_KLIENTA'
+      
+        'where (KOD_KLIENTA_FK=:KOD_KLIENTA and KOD_MARK_FK=:KOD_MARK and' +
+        ' KOD_TIPI_FK=:KOD_TIPI and KOD_MESTO_FK=:KOD_MESTO)')
+    ModifySQL.Strings = (
+      'update AVTO_KLIENTA'
+      'set'
+      '  KOD_KLIENTA_FK = :KOD_KLIENTA_FK,'
+      '  KOD_MARK_FK = :KOD_MARK_FK,'
+      '  KOD_TIPI_FK = :KOD_TIPI_FK,'
+      '  KOD_MESTO_FK = :KOD_MESTO_FK,'
+      '  MODEL_AVTO = :MODEL_AVTO,'
+      '  NOMER_AVTO = :NOMER_AVTO,'
+      '  RIK = :RIK,'
+      '  VIN = :VIN'
+      'where'
+      '  KOD_AVTO = :OLD_KOD_AVTO and'
+      '  KOD_KLIENTA_FK = :OLD_KOD_KLIENTA_FK and'
+      '  KOD_MARK_FK = :OLD_KOD_MARK_FK and'
+      '  KOD_TIPI_FK = :OLD_KOD_TIPI_FK and'
+      '  KOD_MESTO_FK = :OLD_KOD_MESTO_FK')
+    ParamCheck = True
+    UniDirectional = False
+    GeneratorField.Field = 'KOD_AVTO'
+    GeneratorField.Generator = 'GEN_AVTO_KLIENTA_ID'
+    Active = True
+    DataSource = DataSource2
+    Left = 64
+    Top = 144
+    object AVTO_KLIENTA_DataSet1KOD_AVTO: TIntegerField
+      FieldName = 'KOD_AVTO'
+      Origin = '"AVTO_KLIENTA"."KOD_AVTO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object AVTO_KLIENTA_DataSet1KOD_MARK_FK: TIntegerField
+      FieldName = 'KOD_MARK_FK'
+      Origin = '"AVTO_KLIENTA"."KOD_MARK_FK"'
+      Required = True
+    end
+    object AVTO_KLIENTA_DataSet1KOD_KLIENTA_FK: TIntegerField
+      FieldName = 'KOD_KLIENTA_FK'
+      Origin = '"AVTO_KLIENTA"."KOD_KLIENTA_FK"'
+      Required = True
+    end
+    object AVTO_KLIENTA_DataSet1KOD_TIPI_FK: TIntegerField
+      FieldName = 'KOD_TIPI_FK'
+      Origin = '"AVTO_KLIENTA"."KOD_TIPI_FK"'
+      Required = True
+    end
+    object AVTO_KLIENTA_DataSet1KOD_MESTO_FK: TIntegerField
+      FieldName = 'KOD_MESTO_FK'
+      Origin = '"AVTO_KLIENTA"."KOD_MESTO_FK"'
+      Required = True
+    end
+    object AVTO_KLIENTA_DataSet1MODEL_AVTO: TIBStringField
+      FieldName = 'MODEL_AVTO'
+      Origin = '"AVTO_KLIENTA"."MODEL_AVTO"'
+      Required = True
+    end
+    object AVTO_KLIENTA_DataSet1NOMER_AVTO: TIBStringField
+      FieldName = 'NOMER_AVTO'
+      Origin = '"AVTO_KLIENTA"."NOMER_AVTO"'
+      Required = True
+      Size = 10
+    end
+    object AVTO_KLIENTA_DataSet1RIK: TIBStringField
+      FieldName = 'RIK'
+      Origin = '"AVTO_KLIENTA"."RIK"'
+      Required = True
+      EditMask = '!0000;1;_'
+      Size = 4
+    end
+    object AVTO_KLIENTA_DataSet1VIN: TIBStringField
+      FieldName = 'VIN'
+      Origin = '"AVTO_KLIENTA"."VIN"'
+      Required = True
+    end
+    object AVTO_KLIENTA_DataSet1Nazv_mark: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Nazv_mark'
+      LookupDataSet = MARKI_DataSet3
+      LookupKeyFields = 'KOD_MARK'
+      LookupResultField = 'NAZV_MARKA'
+      KeyFields = 'KOD_MARK_FK'
+      Lookup = True
+    end
+    object AVTO_KLIENTA_DataSet1Nazv_tipa: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Nazv_tipa'
+      LookupDataSet = TIPI_TZ_DataSet7
+      LookupKeyFields = 'KOD_TIPI'
+      LookupResultField = 'TZ'
+      KeyFields = 'KOD_TIPI_FK'
+      Size = 50
+      Lookup = True
+    end
+    object AVTO_KLIENTA_DataSet1Nazv_mesta: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Nazv_mesta'
+      LookupDataSet = MESTO_REG_DataSet4
+      LookupKeyFields = 'KOD_MESTO'
+      LookupResultField = 'NAZVA_MESTA'
+      KeyFields = 'KOD_MESTO_FK'
+      Lookup = True
+    end
+    object AVTO_KLIENTA_DataSet1Kod_masta: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Kod_masta'
+      LookupDataSet = MESTO_REG_DataSet4
+      LookupKeyFields = 'KOD_MESTO'
+      LookupResultField = 'ZONA'
+      KeyFields = 'KOD_MESTO_FK'
+      Size = 1
+      Lookup = True
+    end
+  end
+  object KLIENT_DataSet2: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from KLIENT'
+      'where'
+      '  KOD_KLIENTA = :OLD_KOD_KLIENTA')
+    InsertSQL.Strings = (
+      'insert into KLIENT'
+      
+        '  (FIO_KLIENT, DATA_ROSHDENIA, INN, TIP, REZIDENT, SERIA, NOMER,' +
+        ' ADRESS, '
+      '   TELEPHONE, KEM_VIDAN, PRIMECHANIE)'
+      'values'
+      
+        '  (:FIO_KLIENT, :DATA_ROSHDENIA, :INN, :TIP, :REZIDENT, :SERIA, ' +
+        ':NOMER, '
+      '   :ADRESS, :TELEPHONE, :KEM_VIDAN, :PRIMECHANIE)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  KOD_KLIENTA,'
+      '  FIO_KLIENT,'
+      '  DATA_ROSHDENIA,'
+      '  INN,'
+      '  TIP,'
+      '  REZIDENT,'
+      '  SERIA,'
+      '  NOMER,'
+      '  ADRESS,'
+      '  TELEPHONE,'
+      '  KEM_VIDAN,'
+      '  PRIMECHANIE'
+      'from KLIENT '
+      'where'
+      '  KOD_KLIENTA = :KOD_KLIENTA')
+    SelectSQL.Strings = (
+      'select * from KLIENT')
+    ModifySQL.Strings = (
+      'update KLIENT'
+      'set'
+      '  FIO_KLIENT = :FIO_KLIENT,'
+      '  DATA_ROSHDENIA = :DATA_ROSHDENIA,'
+      '  INN = :INN,'
+      '  TIP = :TIP,'
+      '  REZIDENT = :REZIDENT,'
+      '  SERIA = :SERIA,'
+      '  NOMER = :NOMER,'
+      '  ADRESS = :ADRESS,'
+      '  TELEPHONE = :TELEPHONE,'
+      '  KEM_VIDAN = :KEM_VIDAN,'
+      '  PRIMECHANIE = :PRIMECHANIE'
+      'where'
+      '  KOD_KLIENTA = :OLD_KOD_KLIENTA')
+    ParamCheck = True
+    UniDirectional = False
+    GeneratorField.Field = 'KOD_KLIENTA'
+    GeneratorField.Generator = 'GEN_KLIENT_ID'
+    Active = True
+    Left = 184
+    Top = 144
+    object KLIENT_DataSet2KOD_KLIENTA: TIntegerField
+      FieldName = 'KOD_KLIENTA'
+      Origin = '"KLIENT"."KOD_KLIENTA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object KLIENT_DataSet2FIO_KLIENT: TIBStringField
+      FieldName = 'FIO_KLIENT'
+      Origin = '"KLIENT"."FIO_KLIENT"'
+      Required = True
+      Size = 50
+    end
+    object KLIENT_DataSet2DATA_ROSHDENIA: TDateField
+      FieldName = 'DATA_ROSHDENIA'
+      Origin = '"KLIENT"."DATA_ROSHDENIA"'
+      Required = True
+      EditMask = '!99/99/00;1;_'
+    end
+    object KLIENT_DataSet2INN: TIBStringField
+      FieldName = 'INN'
+      Origin = '"KLIENT"."INN"'
+      Required = True
+      Size = 10
+    end
+    object KLIENT_DataSet2TIP: TIBStringField
+      FieldName = 'TIP'
+      Origin = '"KLIENT"."TIP"'
+      Required = True
+      Size = 3
+    end
+    object KLIENT_DataSet2REZIDENT: TIBStringField
+      FieldName = 'REZIDENT'
+      Origin = '"KLIENT"."REZIDENT"'
+      Required = True
+      Size = 3
+    end
+    object KLIENT_DataSet2SERIA: TIBStringField
+      FieldName = 'SERIA'
+      Origin = '"KLIENT"."SERIA"'
+      Required = True
+      Size = 2
+    end
+    object KLIENT_DataSet2ADRESS: TIBStringField
+      FieldName = 'ADRESS'
+      Origin = '"KLIENT"."ADRESS"'
+      Required = True
+      Size = 50
+    end
+    object KLIENT_DataSet2NOMER: TIBStringField
+      FieldName = 'NOMER'
+      Origin = '"KLIENT"."NOMER"'
+      Required = True
+      Size = 10
+    end
+    object KLIENT_DataSet2TELEPHONE: TIBStringField
+      FieldName = 'TELEPHONE'
+      Origin = '"KLIENT"."TELEPHONE"'
+      Required = True
+      EditMask = '!+38\(999\)000-00-00;1;_'
+    end
+    object KLIENT_DataSet2KEM_VIDAN: TIBStringField
+      FieldName = 'KEM_VIDAN'
+      Origin = '"KLIENT"."KEM_VIDAN"'
+      Required = True
+      Size = 123
+    end
+    object KLIENT_DataSet2PRIMECHANIE: TIBStringField
+      FieldName = 'PRIMECHANIE'
+      Origin = '"KLIENT"."PRIMECHANIE"'
+      Size = 50
+    end
+  end
+  object MARKI_DataSet3: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from MARKI'
+      'where'
+      '  KOD_MARK = :OLD_KOD_MARK')
+    InsertSQL.Strings = (
+      'insert into MARKI'
+      '  (NAZV_MARKA)'
+      'values'
+      '  (:NAZV_MARKA)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  KOD_MARK,'
+      '  NAZV_MARKA'
+      'from MARKI '
+      'where'
+      '  KOD_MARK = :KOD_MARK')
+    SelectSQL.Strings = (
+      'select * from MARKI')
+    ModifySQL.Strings = (
+      'update MARKI'
+      'set'
+      '  NAZV_MARKA = :NAZV_MARKA'
+      'where'
+      '  KOD_MARK = :OLD_KOD_MARK')
+    ParamCheck = True
+    UniDirectional = False
+    GeneratorField.Field = 'KOD_MARK'
+    GeneratorField.Generator = 'GEN_MARKI_ID'
+    Active = True
+    DataSource = DataSource1
+    Left = 304
+    Top = 144
+    object MARKI_DataSet3KOD_MARK: TIntegerField
+      FieldName = 'KOD_MARK'
+      Origin = '"MARKI"."KOD_MARK"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object MARKI_DataSet3NAZV_MARKA: TIBStringField
+      FieldName = 'NAZV_MARKA'
+      Origin = '"MARKI"."NAZV_MARKA"'
+      Required = True
+      Size = 15
+    end
+  end
+  object MESTO_REG_DataSet4: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from MESTO_REG'
+      'where'
+      '  KOD_MESTO = :OLD_KOD_MESTO')
+    InsertSQL.Strings = (
+      'insert into MESTO_REG'
+      '  (NAZVA_MESTA, ZONA)'
+      'values'
+      '  (:NAZVA_MESTA, :ZONA)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  KOD_MESTO,'
+      '  NAZVA_MESTA,'
+      '  ZONA'
+      'from MESTO_REG '
+      'where'
+      '  KOD_MESTO = :KOD_MESTO')
+    SelectSQL.Strings = (
+      'select * from MESTO_REG')
+    ModifySQL.Strings = (
+      'update MESTO_REG'
+      'set'
+      '  NAZVA_MESTA = :NAZVA_MESTA,'
+      '  ZONA = :ZONA'
+      'where'
+      '  KOD_MESTO = :OLD_KOD_MESTO')
+    ParamCheck = True
+    UniDirectional = False
+    GeneratorField.Field = 'KOD_MESTO'
+    GeneratorField.Generator = 'GEN_MESTO_REG_ID'
+    Active = True
+    DataSource = DataSource1
+    Left = 416
+    Top = 144
+    object MESTO_REG_DataSet4KOD_MESTO: TIntegerField
+      FieldName = 'KOD_MESTO'
+      Origin = '"MESTO_REG"."KOD_MESTO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object MESTO_REG_DataSet4NAZVA_MESTA: TIBStringField
+      FieldName = 'NAZVA_MESTA'
+      Origin = '"MESTO_REG"."NAZVA_MESTA"'
+      Required = True
+    end
+    object MESTO_REG_DataSet4ZONA: TIBStringField
+      FieldName = 'ZONA'
+      Origin = '"MESTO_REG"."ZONA"'
+      Required = True
+      Size = 1
+    end
+  end
+  object POLIS_DataSet5: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from POLIS'
+      'where'
+      '  KOD_POLISA = :OLD_KOD_POLISA and'
+      '  KOD_PRED_FK = :OLD_KOD_PRED_FK and'
+      '  KOD_KLIENTA_FK = :OLD_KOD_KLIENTA_FK and'
+      '  KOD_AVTO_FK = :OLD_KOD_AVTO_FK')
+    InsertSQL.Strings = (
+      'insert into POLIS'
+      
+        '  (KOD_PRED_FK, KOD_KLIENTA_FK, KOD_AVTO_FK, SERIA_POLISA, NOMER' +
+        '_POLISA, '
+      
+        '   OT, MESAT_1, MESAT_2, MESAT_3, MESAT_4, MESAT_5, MESAT_6, MES' +
+        'AT_7, MESAT_8, '
+      
+        '   MESAT_9, MESAT_10, MESAT_11, MESAT_12, TERMIN_DEISTVIA, S, PO' +
+        ', STASH, '
+      
+        '   TAXI, OTK, DATA_OTK, BAZ_PLAT, FRANSHIZA, PLATISH, PRIMECHANI' +
+        'E, BONUS_MALUS, '
+      '   CKIDKA, STATUS, VSEGO_K_OPLATE)'
+      'values'
+      
+        '  (:KOD_PRED_FK, :KOD_KLIENTA_FK, :KOD_AVTO_FK, :SERIA_POLISA, :' +
+        'NOMER_POLISA, '
+      
+        '   :OT, :MESAT_1, :MESAT_2, :MESAT_3, :MESAT_4, :MESAT_5, :MESAT' +
+        '_6, :MESAT_7, '
+      
+        '   :MESAT_8, :MESAT_9, :MESAT_10, :MESAT_11, :MESAT_12, :TERMIN_' +
+        'DEISTVIA, '
+      
+        '   :S, :PO, :STASH, :TAXI, :OTK, :DATA_OTK, :BAZ_PLAT, :FRANSHIZ' +
+        'A, :PLATISH, '
+      
+        '   :PRIMECHANIE, :BONUS_MALUS, :CKIDKA, :STATUS, :VSEGO_K_OPLATE' +
+        ')')
+    RefreshSQL.Strings = (
+      'Select '
+      '  KOD_POLISA,'
+      '  KOD_PRED_FK,'
+      '  KOD_KLIENTA_FK,'
+      '  KOD_AVTO_FK,'
+      '  SERIA_POLISA,'
+      '  NOMER_POLISA,'
+      '  OT,'
+      '  MESAT_1,'
+      '  MESAT_2,'
+      '  MESAT_3,'
+      '  MESAT_4,'
+      '  MESAT_5,'
+      '  MESAT_6,'
+      '  MESAT_7,'
+      '  MESAT_8,'
+      '  MESAT_9,'
+      '  MESAT_10,'
+      '  MESAT_11,'
+      '  MESAT_12,'
+      '  TERMIN_DEISTVIA,'
+      '  S,'
+      '  PO,'
+      '  STASH,'
+      '  TAXI,'
+      '  OTK,'
+      '  DATA_OTK,'
+      '  BAZ_PLAT,'
+      '  FRANSHIZA,'
+      '  PLATISH,'
+      '  PRIMECHANIE,'
+      '  BONUS_MALUS,'
+      '  CKIDKA,'
+      '  STATUS,'
+      '  VSEGO_K_OPLATE'
+      'from POLIS '
+      'where'
+      '  KOD_POLISA = :KOD_POLISA and'
+      '  KOD_PRED_FK = :KOD_PRED_FK and'
+      '  KOD_KLIENTA_FK = :KOD_KLIENTA_FK and'
+      '  KOD_AVTO_FK = :KOD_AVTO_FK')
+    SelectSQL.Strings = (
+      'select * from POLIS'
+      
+        'where (KOD_PRED_FK=:KOD_PRED and KOD_KLIENTA_FK=:KOD_KLIENTA and' +
+        ' KOD_AVTO_FK=:KOD_AVTO)')
+    ModifySQL.Strings = (
+      'update POLIS'
+      'set'
+      '  KOD_PRED_FK = :KOD_PRED_FK,'
+      '  KOD_KLIENTA_FK = :KOD_KLIENTA_FK,'
+      '  KOD_AVTO_FK = :KOD_AVTO_FK,'
+      '  SERIA_POLISA = :SERIA_POLISA,'
+      '  NOMER_POLISA = :NOMER_POLISA,'
+      '  OT = :OT,'
+      '  MESAT_1 = :MESAT_1,'
+      '  MESAT_2 = :MESAT_2,'
+      '  MESAT_3 = :MESAT_3,'
+      '  MESAT_4 = :MESAT_4,'
+      '  MESAT_5 = :MESAT_5,'
+      '  MESAT_6 = :MESAT_6,'
+      '  MESAT_7 = :MESAT_7,'
+      '  MESAT_8 = :MESAT_8,'
+      '  MESAT_9 = :MESAT_9,'
+      '  MESAT_10 = :MESAT_10,'
+      '  MESAT_11 = :MESAT_11,'
+      '  MESAT_12 = :MESAT_12,'
+      '  TERMIN_DEISTVIA = :TERMIN_DEISTVIA,'
+      '  S = :S,'
+      '  PO = :PO,'
+      '  STASH = :STASH,'
+      '  TAXI = :TAXI,'
+      '  OTK = :OTK,'
+      '  DATA_OTK = :DATA_OTK,'
+      '  BAZ_PLAT = :BAZ_PLAT,'
+      '  FRANSHIZA = :FRANSHIZA,'
+      '  PLATISH = :PLATISH,'
+      '  PRIMECHANIE = :PRIMECHANIE,'
+      '  BONUS_MALUS = :BONUS_MALUS,'
+      '  CKIDKA = :CKIDKA,'
+      '  STATUS = :STATUS,'
+      '  VSEGO_K_OPLATE = :VSEGO_K_OPLATE'
+      'where'
+      '  KOD_POLISA = :OLD_KOD_POLISA and'
+      '  KOD_PRED_FK = :OLD_KOD_PRED_FK and'
+      '  KOD_KLIENTA_FK = :OLD_KOD_KLIENTA_FK and'
+      '  KOD_AVTO_FK = :OLD_KOD_AVTO_FK')
+    ParamCheck = True
+    UniDirectional = False
+    GeneratorField.Field = 'KOD_POLISA'
+    GeneratorField.Generator = 'GEN_POLIS_ID'
+    Active = True
+    Left = 64
+    Top = 272
+    object POLIS_DataSet5KOD_POLISA: TSmallintField
+      FieldName = 'KOD_POLISA'
+      Origin = '"POLIS"."KOD_POLISA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object POLIS_DataSet5KOD_PRED_FK: TIntegerField
+      FieldName = 'KOD_PRED_FK'
+      Origin = '"POLIS"."KOD_PRED_FK"'
+      Required = True
+    end
+    object POLIS_DataSet5KOD_KLIENTA_FK: TIntegerField
+      FieldName = 'KOD_KLIENTA_FK'
+      Origin = '"POLIS"."KOD_KLIENTA_FK"'
+      Required = True
+    end
+    object POLIS_DataSet5KOD_AVTO_FK: TIntegerField
+      FieldName = 'KOD_AVTO_FK'
+      Origin = '"POLIS"."KOD_AVTO_FK"'
+      Required = True
+    end
+    object POLIS_DataSet5SERIA_POLISA: TIBStringField
+      FieldName = 'SERIA_POLISA'
+      Origin = '"POLIS"."SERIA_POLISA"'
+      Required = True
+      Size = 5
+    end
+    object POLIS_DataSet5NOMER_POLISA: TIBStringField
+      FieldName = 'NOMER_POLISA'
+      Origin = '"POLIS"."NOMER_POLISA"'
+      Required = True
+      Size = 10
+    end
+    object POLIS_DataSet5OT: TDateField
+      FieldName = 'OT'
+      Origin = '"POLIS"."OT"'
+      Required = True
+      EditMask = '!99/99/0000;1;_'
+    end
+    object POLIS_DataSet5TERMIN_DEISTVIA: TIBStringField
+      FieldName = 'TERMIN_DEISTVIA'
+      Origin = '"POLIS"."TERMIN_DEISTVIA"'
+      Required = True
+      Size = 10
+    end
+    object POLIS_DataSet5S: TDateField
+      FieldName = 'S'
+      Origin = '"POLIS"."S"'
+      Required = True
+      EditMask = '!99/99/0000;1;_'
+    end
+    object POLIS_DataSet5PO: TDateField
+      FieldName = 'PO'
+      Origin = '"POLIS"."PO"'
+      Required = True
+      EditMask = '!99/99/0000;1;_'
+    end
+    object POLIS_DataSet5STASH: TIBStringField
+      FieldName = 'STASH'
+      Origin = '"POLIS"."STASH"'
+      Required = True
+      Size = 17
+    end
+    object POLIS_DataSet5TAXI: TIBStringField
+      FieldName = 'TAXI'
+      Origin = '"POLIS"."TAXI"'
+      Required = True
+      Size = 3
+    end
+    object POLIS_DataSet5OTK: TIBStringField
+      FieldName = 'OTK'
+      Origin = '"POLIS"."OTK"'
+      Required = True
+      Size = 3
+    end
+    object POLIS_DataSet5DATA_OTK: TDateField
+      FieldName = 'DATA_OTK'
+      Origin = '"POLIS"."DATA_OTK"'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object POLIS_DataSet5FRANSHIZA: TIBStringField
+      FieldName = 'FRANSHIZA'
+      Origin = '"POLIS"."FRANSHIZA"'
+      Required = True
+      Size = 10
+    end
+    object POLIS_DataSet5PLATISH: TIBStringField
+      FieldName = 'PLATISH'
+      Origin = '"POLIS"."PLATISH"'
+      Required = True
+      Size = 15
+    end
+    object POLIS_DataSet5PRIMECHANIE: TIBStringField
+      FieldName = 'PRIMECHANIE'
+      Origin = '"POLIS"."PRIMECHANIE"'
+      Size = 255
+    end
+    object POLIS_DataSet5BONUS_MALUS: TIBStringField
+      FieldName = 'BONUS_MALUS'
+      Origin = '"POLIS"."BONUS_MALUS"'
+      Required = True
+      Size = 15
+    end
+    object POLIS_DataSet5CKIDKA: TIBStringField
+      FieldName = 'CKIDKA'
+      Origin = '"POLIS"."CKIDKA"'
+      Required = True
+      Size = 15
+    end
+    object POLIS_DataSet5STATUS: TIBStringField
+      FieldName = 'STATUS'
+      Origin = '"POLIS"."STATUS"'
+      Required = True
+      Size = 50
+    end
+    object POLIS_DataSet5VSEGO_K_OPLATE: TIBStringField
+      FieldName = 'VSEGO_K_OPLATE'
+      Origin = '"POLIS"."VSEGO_K_OPLATE"'
+      Required = True
+      Size = 15
+    end
+    object POLIS_DataSet5Nazv_pred: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Nazv_pred'
+      LookupDataSet = PRESTAVNIKI_DataSet6
+      LookupKeyFields = 'KOD_PRED'
+      LookupResultField = 'FIO_PREDSTAVNIKI'
+      KeyFields = 'KOD_PRED_FK'
+      Size = 30
+      Lookup = True
+    end
+    object POLIS_DataSet5Nazv_klienta: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Nazv_klienta'
+      LookupDataSet = KLIENT_DataSet2
+      LookupKeyFields = 'KOD_KLIENTA'
+      LookupResultField = 'FIO_KLIENT'
+      KeyFields = 'KOD_KLIENTA_FK'
+      Size = 30
+      Lookup = True
+    end
+    object POLIS_DataSet5Nazv_avto: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Nazv_avto'
+      LookupDataSet = AVTO_KLIENTA_DataSet1
+      LookupKeyFields = 'KOD_AVTO'
+      LookupResultField = 'NOMER_AVTO'
+      KeyFields = 'KOD_AVTO_FK'
+      Size = 15
+      Lookup = True
+    end
+    object POLIS_DataSet5MESAT_1: TIBStringField
+      FieldName = 'MESAT_1'
+      Origin = '"POLIS"."MESAT_1"'
+      Size = 1
+    end
+    object POLIS_DataSet5MESAT_2: TIBStringField
+      FieldName = 'MESAT_2'
+      Origin = '"POLIS"."MESAT_2"'
+      Size = 1
+    end
+    object POLIS_DataSet5MESAT_3: TIBStringField
+      FieldName = 'MESAT_3'
+      Origin = '"POLIS"."MESAT_3"'
+      Size = 1
+    end
+    object POLIS_DataSet5MESAT_4: TIBStringField
+      FieldName = 'MESAT_4'
+      Origin = '"POLIS"."MESAT_4"'
+      Size = 1
+    end
+    object POLIS_DataSet5MESAT_5: TIBStringField
+      FieldName = 'MESAT_5'
+      Origin = '"POLIS"."MESAT_5"'
+      Size = 1
+    end
+    object POLIS_DataSet5MESAT_6: TIBStringField
+      FieldName = 'MESAT_6'
+      Origin = '"POLIS"."MESAT_6"'
+      Size = 1
+    end
+    object POLIS_DataSet5MESAT_7: TIBStringField
+      FieldName = 'MESAT_7'
+      Origin = '"POLIS"."MESAT_7"'
+      Size = 1
+    end
+    object POLIS_DataSet5MESAT_8: TIBStringField
+      FieldName = 'MESAT_8'
+      Origin = '"POLIS"."MESAT_8"'
+      Size = 1
+    end
+    object POLIS_DataSet5MESAT_9: TIBStringField
+      FieldName = 'MESAT_9'
+      Origin = '"POLIS"."MESAT_9"'
+      Size = 1
+    end
+    object POLIS_DataSet5MESAT_10: TIBStringField
+      FieldName = 'MESAT_10'
+      Origin = '"POLIS"."MESAT_10"'
+      Size = 1
+    end
+    object POLIS_DataSet5MESAT_11: TIBStringField
+      FieldName = 'MESAT_11'
+      Origin = '"POLIS"."MESAT_11"'
+      Size = 1
+    end
+    object POLIS_DataSet5MESAT_12: TIBStringField
+      FieldName = 'MESAT_12'
+      Origin = '"POLIS"."MESAT_12"'
+      Size = 1
+    end
+    object POLIS_DataSet5BAZ_PLAT: TIBStringField
+      FieldName = 'BAZ_PLAT'
+      Origin = '"POLIS"."BAZ_PLAT"'
+      Required = True
+      Size = 10
+    end
+  end
+  object PRESTAVNIKI_DataSet6: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from PREDSTAVNIKI'
+      'where'
+      '  KOD_PRED = :OLD_KOD_PRED')
+    InsertSQL.Strings = (
+      'insert into PREDSTAVNIKI'
+      
+        '  (FIO_PREDSTAVNIKI, PAROL, E_MAIL, TELEPHONE, DOLSHNOST, PRIMEC' +
+        'HANIE)'
+      'values'
+      
+        '  (:FIO_PREDSTAVNIKI, :PAROL, :E_MAIL, :TELEPHONE, :DOLSHNOST, :' +
+        'PRIMECHANIE)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  KOD_PRED,'
+      '  FIO_PREDSTAVNIKI,'
+      '  PAROL,'
+      '  E_MAIL,'
+      '  TELEPHONE,'
+      '  DOLSHNOST,'
+      '  PRIMECHANIE'
+      'from PREDSTAVNIKI '
+      'where'
+      '  KOD_PRED = :KOD_PRED')
+    SelectSQL.Strings = (
+      'select * from PREDSTAVNIKI')
+    ModifySQL.Strings = (
+      'update PREDSTAVNIKI'
+      'set'
+      '  FIO_PREDSTAVNIKI = :FIO_PREDSTAVNIKI,'
+      '  PAROL = :PAROL,'
+      '  E_MAIL = :E_MAIL,'
+      '  TELEPHONE = :TELEPHONE,'
+      '  DOLSHNOST = :DOLSHNOST,'
+      '  PRIMECHANIE = :PRIMECHANIE'
+      'where'
+      '  KOD_PRED = :OLD_KOD_PRED')
+    ParamCheck = True
+    UniDirectional = False
+    GeneratorField.Field = 'KOD_PRED'
+    GeneratorField.Generator = 'GEN_PREDSTAVNIKI_ID'
+    Active = True
+    Left = 184
+    Top = 272
+    object PRESTAVNIKI_DataSet6KOD_PRED: TIntegerField
+      FieldName = 'KOD_PRED'
+      Origin = '"PREDSTAVNIKI"."KOD_PRED"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object PRESTAVNIKI_DataSet6FIO_PREDSTAVNIKI: TIBStringField
+      FieldName = 'FIO_PREDSTAVNIKI'
+      Origin = '"PREDSTAVNIKI"."FIO_PREDSTAVNIKI"'
+      Required = True
+      Size = 50
+    end
+    object PRESTAVNIKI_DataSet6PAROL: TIBStringField
+      FieldName = 'PAROL'
+      Origin = '"PREDSTAVNIKI"."PAROL"'
+      Required = True
+    end
+    object PRESTAVNIKI_DataSet6E_MAIL: TIBStringField
+      FieldName = 'E_MAIL'
+      Origin = '"PREDSTAVNIKI"."E_MAIL"'
+      Required = True
+    end
+    object PRESTAVNIKI_DataSet6TELEPHONE: TIBStringField
+      FieldName = 'TELEPHONE'
+      Origin = '"PREDSTAVNIKI"."TELEPHONE"'
+      Required = True
+      EditMask = '!+38\(999\)000-00-00;1;_'
+    end
+    object PRESTAVNIKI_DataSet6PRIMECHANIE: TIBStringField
+      FieldName = 'PRIMECHANIE'
+      Origin = '"PREDSTAVNIKI"."PRIMECHANIE"'
+      Size = 50
+    end
+    object PRESTAVNIKI_DataSet6DOLSHNOST: TIBStringField
+      FieldName = 'DOLSHNOST'
+      Origin = '"PREDSTAVNIKI"."DOLSHNOST"'
+      Required = True
+      Size = 15
+    end
+  end
+  object TIPI_TZ_DataSet7: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from TIPI_TZ'
+      'where'
+      '  KOD_TIPI = :OLD_KOD_TIPI')
+    InsertSQL.Strings = (
+      'insert into TIPI_TZ'
+      '  (TZ, TIP)'
+      'values'
+      '  (:TZ, :TIP)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  KOD_TIPI,'
+      '  TZ,'
+      '  TIP'
+      'from TIPI_TZ '
+      'where'
+      '  KOD_TIPI = :KOD_TIPI')
+    SelectSQL.Strings = (
+      'select * from TIPI_TZ'
+      '')
+    ModifySQL.Strings = (
+      'update TIPI_TZ'
+      'set'
+      '  TZ = :TZ,'
+      '  TIP = :TIP'
+      'where'
+      '  KOD_TIPI = :OLD_KOD_TIPI')
+    ParamCheck = True
+    UniDirectional = False
+    GeneratorField.Field = 'KOD_TIPI'
+    GeneratorField.Generator = 'GEN_TIPI_TZ_ID'
+    Active = True
+    DataSource = DataSource1
+    Left = 304
+    Top = 272
+    object TIPI_TZ_DataSet7KOD_TIPI: TIntegerField
+      FieldName = 'KOD_TIPI'
+      Origin = '"TIPI_TZ"."KOD_TIPI"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object TIPI_TZ_DataSet7TZ: TIBStringField
+      FieldName = 'TZ'
+      Origin = '"TIPI_TZ"."TZ"'
+      Required = True
+      Size = 50
+    end
+    object TIPI_TZ_DataSet7TIP: TIBStringField
+      FieldName = 'TIP'
+      Origin = '"TIPI_TZ"."TIP"'
+      Required = True
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = AVTO_KLIENTA_DataSet1
+    Left = 64
+    Top = 192
+  end
+  object DataSource2: TDataSource
+    DataSet = KLIENT_DataSet2
+    Left = 184
+    Top = 192
+  end
+  object DataSource3: TDataSource
+    DataSet = MARKI_DataSet3
+    Left = 304
+    Top = 192
+  end
+  object DataSource4: TDataSource
+    DataSet = MESTO_REG_DataSet4
+    Left = 416
+    Top = 192
+  end
+  object DataSource5: TDataSource
+    DataSet = POLIS_DataSet5
+    Left = 64
+    Top = 320
+  end
+  object DataSource6: TDataSource
+    DataSet = PRESTAVNIKI_DataSet6
+    Left = 184
+    Top = 320
+  end
+  object DataSource7: TDataSource
+    DataSet = TIPI_TZ_DataSet7
+    Left = 304
+    Top = 320
+  end
+  object IBQuery6: TIBQuery
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    Active = True
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from  PREDSTAVNIKI'
+      'where (FIO_PREDSTAVNIKI=:par1 and PAROL=:par2)')
+    Left = 416
+    Top = 272
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'par1'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'par2'
+        ParamType = ptUnknown
+      end>
+    object IBQuery6KOD_PRED: TIntegerField
+      FieldName = 'KOD_PRED'
+      Origin = '"PREDSTAVNIKI"."KOD_PRED"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object IBQuery6FIO_PREDSTAVNIKI: TIBStringField
+      FieldName = 'FIO_PREDSTAVNIKI'
+      Origin = '"PREDSTAVNIKI"."FIO_PREDSTAVNIKI"'
+      Required = True
+      Size = 50
+    end
+    object IBQuery6PAROL: TIBStringField
+      FieldName = 'PAROL'
+      Origin = '"PREDSTAVNIKI"."PAROL"'
+      Required = True
+      Size = 7
+    end
+    object IBQuery6E_MAIL: TIBStringField
+      FieldName = 'E_MAIL'
+      Origin = '"PREDSTAVNIKI"."E_MAIL"'
+      Required = True
+    end
+    object IBQuery6TELEPHONE: TIBStringField
+      FieldName = 'TELEPHONE'
+      Origin = '"PREDSTAVNIKI"."TELEPHONE"'
+      Required = True
+      Size = 13
+    end
+    object IBQuery6DOLSHNOST: TIBStringField
+      FieldName = 'DOLSHNOST'
+      Origin = '"PREDSTAVNIKI"."DOLSHNOST"'
+      Required = True
+      Size = 15
+    end
+    object IBQuery6PRIMECHANIE: TIBStringField
+      FieldName = 'PRIMECHANIE'
+      Origin = '"PREDSTAVNIKI"."PRIMECHANIE"'
+      Size = 50
+    end
+  end
+  object IBQuery1: TIBQuery
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    Active = True
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from VW_POLIS'
+      'where (OT>=:par1 and OT<=:par2)')
+    Left = 416
+    Top = 320
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'par1'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'par2'
+        ParamType = ptUnknown
+      end>
+  end
+end

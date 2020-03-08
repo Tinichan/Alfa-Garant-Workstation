@@ -1,0 +1,37 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit2H
+#define Unit2H
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Data.DB.hpp>
+#include <IBX.IBDatabase.hpp>
+#include <IBX.IBCustomDataSet.hpp>
+//---------------------------------------------------------------------------
+class TDM : public TDataModule
+{
+__published:	// IDE-managed Components
+	TIBDatabase *IBDatabase1;
+	TIBTransaction *IBTransaction1;
+	TIBDataSet *AVTO_KLIENTAIBDataSet1;
+	TIBDataSet *IBDataSet2;
+	TIBDataSet *IBDataSet3;
+	TIBDataSet *IBDataSet4;
+	TIBDataSet *IBDataSet5;
+	TIBDataSet *IBDataSet6;
+	TIBDataSet *IBDataSet7;
+	TDataSource *DataSource1;
+	TDataSource *DataSource2;
+	TDataSource *DataSource3;
+	TDataSource *DataSource4;
+	TDataSource *DataSource5;
+	TDataSource *DataSource6;
+	TDataSource *DataSource7;
+private:	// User declarations
+public:		// User declarations
+	__fastcall TDM(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TDM *DM;
+//---------------------------------------------------------------------------
+#endif

@@ -1,0 +1,67 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit8.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm8 *Form8;
+//---------------------------------------------------------------------------
+__fastcall TForm8::TForm8(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm8::FormActivate(TObject *Sender)
+{
+	DM->KLIENT_DataSet2->Close();
+	DM->KLIENT_DataSet2->Open();
+    DM->AVTO_KLIENTA_DataSet1->Close();
+	DM->AVTO_KLIENTA_DataSet1->SelectSQL->Clear();
+	DM->AVTO_KLIENTA_DataSet1->SelectSQL->Add("select * from AVTO_KLIENTA WHERE KOD_KLIENTA_FK=:KOD_KLIENTA");
+	DM->AVTO_KLIENTA_DataSet1->Open();
+	//DM->KLIENT_DataSet2->Locate("KOD_KLIENT",Form7->id,TLocateOptions()<<loPartialKey);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm8::Button1Click(TObject *Sender)
+{
+	DM->KLIENT_DataSet2->Post();
+	Form1->id1=DM->KLIENT_DataSet2->FieldByName("KOD_KLIENTA")->AsInteger;
+	DM->KLIENT_DataSet2->Transaction->Commit();
+	Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm8::Button2Click(TObject *Sender)
+{
+	Form1->id1=DM->KLIENT_DataSet2->FieldByName("KOD_KLIENTA")->AsInteger;
+	DM->KLIENT_DataSet2->Cancel();
+	DM->KLIENT_DataSet2->Transaction->Rollback();
+	Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm8::Button3Click(TObject *Sender)
+{
+	Form1->actAdd(DM->AVTO_KLIENTA_DataSet1);
+	DM->AVTO_KLIENTA_DataSet1->FieldByName("KOD_KLIENTA_FK")->AsInteger=DM->KLIENT_DataSet2->FieldByName("KOD_KLIENTA")->AsInteger;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm8::Button4Click(TObject *Sender)
+{
+	Form1->actDelete(DM->AVTO_KLIENTA_DataSet1);
+	FormActivate(Sender);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm8::DateTimePicker1Change(TObject *Sender)
+{
+	DBEdit4->Text=DateTimePicker1->Date;
+}
+//---------------------------------------------------------------------------
+

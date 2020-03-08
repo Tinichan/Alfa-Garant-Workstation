@@ -1,0 +1,180 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit10H
+#define Unit10H
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Vcl.CheckLst.hpp>
+#include <Vcl.DBCtrls.hpp>
+#include <Vcl.Mask.hpp>
+#include <Vcl.ExtCtrls.hpp>
+#include <Vcl.Menus.hpp>
+#include "Unit1.h"
+#include "Unit2.h"
+#include <Data.DB.hpp>
+#include <Vcl.DBGrids.hpp>
+#include <Vcl.Grids.hpp>
+#include "frxClass.hpp"
+#include <Vcl.ComCtrls.hpp>
+//---------------------------------------------------------------------------
+class TForm10 : public TForm
+{
+__published:	// IDE-managed Components
+	TLabel *Label3;
+	TLabel *Label4;
+	TLabel *Label5;
+	TLabel *Label6;
+	TLabel *Label7;
+	TLabel *Label8;
+	TLabel *Label9;
+	TLabel *Label23;
+	TLabel *Label27;
+	TEdit *Edit22;
+	TEdit *Edit23;
+	TEdit *Edit24;
+	TEdit *Edit25;
+	TEdit *Edit26;
+	TEdit *Edit27;
+	TEdit *Edit28;
+	TLabel *Label28;
+	TLabel *Label29;
+	TLabel *Label30;
+	TLabel *Label31;
+	TLabel *Label32;
+	TButton *Button1;
+	TButton *Button2;
+	TLabel *Label33;
+	TDBEdit *DBEdit1;
+	TDBEdit *DBEdit2;
+	TDBEdit *DBEdit3;
+	TDBEdit *DBEdit4;
+	TDBEdit *DBEdit20;
+	TDBEdit *DBEdit22;
+	TDBEdit *DBEdit23;
+	TDBComboBox *DBComboBox1;
+	TDBComboBox *DBComboBox2;
+	TDBCheckBox *DBCheckBox2;
+	TDBCheckBox *DBCheckBox3;
+	TDBComboBox *DBComboBox5;
+	TDBComboBox *DBComboBox6;
+	TDBComboBox *DBComboBox7;
+	TDBComboBox *DBComboBox8;
+	TDBComboBox *DBComboBox9;
+	TDBEdit *DBEdit5;
+	TDBEdit *DBEdit6;
+	TLabel *Label10;
+	TLabel *Label11;
+	TLabel *Label12;
+	TLabel *Label13;
+	TLabel *Label14;
+	TLabel *Label15;
+	TLabel *Label16;
+	TDBEdit *DBEdit7;
+	TDBEdit *DBEdit8;
+	TDBEdit *DBEdit9;
+	TDBEdit *DBEdit10;
+	TDBEdit *DBEdit11;
+	TLabel *Label17;
+	TLabel *Label18;
+	TLabel *Label19;
+	TLabel *Label20;
+	TLabel *Label21;
+	TLabel *Label22;
+	TLabel *Label24;
+	TLabel *Label25;
+	TLabel *Label26;
+	TLabel *Label34;
+	TLabel *Label35;
+	TDBEdit *DBEdit12;
+	TDBEdit *DBEdit13;
+	TDBEdit *DBEdit14;
+	TDBEdit *DBEdit15;
+	TDBEdit *DBEdit16;
+	TDBEdit *DBEdit17;
+	TDBEdit *DBEdit18;
+	TDBEdit *DBEdit19;
+	TDBEdit *DBEdit21;
+	TDBEdit *DBEdit24;
+	TDateTimePicker *DateTimePicker1;
+	TDBLookupComboBox *DBLookupComboBox1;
+	TDBLookupComboBox *DBLookupComboBox2;
+	TDateTimePicker *DateTimePicker2;
+	TDateTimePicker *DateTimePicker3;
+	TDateTimePicker *DateTimePicker4;
+	TDBCheckBox *DBCheckBox1;
+	TDBCheckBox *DBCheckBox4;
+	TDBCheckBox *DBCheckBox5;
+	TDBCheckBox *DBCheckBox6;
+	TDBCheckBox *DBCheckBox7;
+	TDBCheckBox *DBCheckBox8;
+	TDBCheckBox *DBCheckBox9;
+	TDBCheckBox *DBCheckBox10;
+	TDBCheckBox *DBCheckBox11;
+	TDBCheckBox *DBCheckBox12;
+	TDBCheckBox *DBCheckBox13;
+	TDBCheckBox *DBCheckBox14;
+	TLabel *Label2;
+	TDBEdit *DBEdit25;
+	TPanel *Panel2;
+	TPanel *Panel1;
+	TDBEdit *DBEdit26;
+	TDBEdit *DBEdit27;
+	TDBEdit *DBEdit28;
+	TDBEdit *DBEdit29;
+	TDBEdit *DBEdit30;
+	TButton *Button3;
+	TEdit *Edit1;
+	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall Button2Click(TObject *Sender);
+	void __fastcall FormActivate(TObject *Sender);
+	void __fastcall DBComboBox2Change(TObject *Sender);
+	void __fastcall DBEdit7Change(TObject *Sender);
+	void __fastcall DBComboBox6Change(TObject *Sender);
+	void __fastcall DBEdit6Change(TObject *Sender);
+	void __fastcall DBEdit14Change(TObject *Sender);
+	void __fastcall DateTimePicker1Change(TObject *Sender);
+	void __fastcall DateTimePicker2Change(TObject *Sender);
+	void __fastcall DateTimePicker3Change(TObject *Sender);
+	void __fastcall DateTimePicker4Change(TObject *Sender);
+	void __fastcall DBCheckBox2Click(TObject *Sender);
+	void __fastcall DBCheckBox1Click(TObject *Sender);
+	void __fastcall DBCheckBox4Click(TObject *Sender);
+	void __fastcall DBCheckBox5Click(TObject *Sender);
+	void __fastcall DBCheckBox6Click(TObject *Sender);
+	void __fastcall DBCheckBox7Click(TObject *Sender);
+	void __fastcall DBCheckBox8Click(TObject *Sender);
+	void __fastcall DBCheckBox9Click(TObject *Sender);
+	void __fastcall DBCheckBox10Click(TObject *Sender);
+	void __fastcall DBCheckBox11Click(TObject *Sender);
+	void __fastcall DBCheckBox12Click(TObject *Sender);
+	void __fastcall DBCheckBox13Click(TObject *Sender);
+	void __fastcall DBCheckBox14Click(TObject *Sender);
+	void __fastcall DBComboBox5Change(TObject *Sender);
+	void __fastcall DBLookupComboBox1Click(TObject *Sender);
+	void __fastcall DBLookupComboBox2Click(TObject *Sender);
+	void __fastcall Button3Click(TObject *Sender);
+	void __fastcall Edit1Change(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TForm10(TComponent* Owner);
+	int mes;
+	int bon_mal;
+	int skid;
+	int baz;
+	int plat;
+	int id_s;
+	double k1;
+	double k2;
+	double k3;
+	double k4;
+	double k5;
+	double k6;
+	double k7;
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm10 *Form10;
+//---------------------------------------------------------------------------
+#endif

@@ -1,0 +1,932 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit10.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma link "frxClass"
+#pragma resource "*.dfm"
+TForm10 *Form10;
+//---------------------------------------------------------------------------
+__fastcall TForm10::TForm10(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::FormActivate(TObject *Sender)
+{
+	//////////////////////////////
+	mes=0;
+	k6 = 1.0;
+	Edit27->Text = k6;
+	Edit28->Text = "1";
+	//////////////////////////////
+ /*	DM->KLIENT_DataSet2->Close();
+	DM->KLIENT_DataSet2->SelectSQL->Clear();
+	DM->KLIENT_DataSet2->SelectSQL->Add("select * from KLIENT WHERE KOD_KLIENTA=:KOD_KLIENTA_FK");
+	DM->KLIENT_DataSet2->Open();       */
+	//////////////////////////////
+	DM->AVTO_KLIENTA_DataSet1->Close();
+	DM->AVTO_KLIENTA_DataSet1->SelectSQL->Clear();
+	DM->AVTO_KLIENTA_DataSet1->SelectSQL->Add("select * from AVTO_KLIENTA WHERE KOD_KLIENTA_FK=:KOD_KLIENTA");
+	DM->AVTO_KLIENTA_DataSet1->Open();
+	//////////////////////////////
+	DBEdit26->Text = Form1->id_s;
+	DBEdit27->Text = DBEdit29->Text;
+	DBEdit28->Text = DBEdit30->Text;
+	//////////////////////////////
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::Button1Click(TObject *Sender)	//кнопка *Зберегти*
+{
+	DM->POLIS_DataSet5->Edit();
+	DM->POLIS_DataSet5->Post();
+	Form1->id2=DM->POLIS_DataSet5->FieldByName("KOD_POLISA")->AsInteger;
+	DM->POLIS_DataSet5->Transaction->Commit();
+	Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::Button2Click(TObject *Sender)	//кнопка *Відміна*
+{
+	DM->POLIS_DataSet5->Cancel();
+	Form1->id2=DM->POLIS_DataSet5->FieldByName("KOD_POLISA")->AsInteger;
+	DM->POLIS_DataSet5->Transaction->Rollback();
+	Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBComboBox2Change(TObject *Sender)
+{
+	if (DBComboBox2->ItemIndex==0)
+	{
+		k7 = 1.0;
+		Edit28->Text = k7;
+		DBCheckBox1->Enabled=true;
+		DBCheckBox1->Checked=true;
+		DBCheckBox4->Enabled=true;
+		DBCheckBox4->Checked=true;
+		DBCheckBox5->Enabled=true;
+		DBCheckBox5->Checked=true;
+		DBCheckBox6->Enabled=true;
+		DBCheckBox6->Checked=true;
+		DBCheckBox7->Enabled=true;
+		DBCheckBox7->Checked=true;
+		DBCheckBox8->Enabled=true;
+		DBCheckBox8->Checked=true;
+		DBCheckBox9->Enabled=true;
+		DBCheckBox9->Checked=true;
+		DBCheckBox10->Enabled=true;
+		DBCheckBox10->Checked=true;
+		DBCheckBox11->Enabled=true;
+		DBCheckBox11->Checked=true;
+		DBCheckBox12->Enabled=true;
+		DBCheckBox12->Checked=true;
+		DBCheckBox13->Enabled=true;
+		DBCheckBox13->Checked=true;
+		DBCheckBox14->Enabled=true;
+		DBCheckBox14->Checked=true;
+	}
+	if (DBComboBox2->ItemIndex==1)
+	{
+		k7 = 0.95;
+		Edit28->Text = k7;//"0.95";
+		DBCheckBox1->Enabled=false;
+		DBCheckBox1->Checked=true;
+		DBCheckBox4->Enabled=false;
+		DBCheckBox4->Checked=true;
+		DBCheckBox5->Enabled=false;
+		DBCheckBox5->Checked=true;
+		DBCheckBox6->Enabled=false;
+		DBCheckBox6->Checked=true;
+		DBCheckBox7->Enabled=false;
+		DBCheckBox7->Checked=true;
+		DBCheckBox8->Enabled=false;
+		DBCheckBox8->Checked=true;
+		DBCheckBox9->Enabled=false;
+		DBCheckBox9->Checked=true;
+		DBCheckBox10->Enabled=false;
+		DBCheckBox10->Checked=true;
+		DBCheckBox11->Enabled=false;
+		DBCheckBox11->Checked=true;
+		DBCheckBox12->Enabled=false;
+		DBCheckBox12->Checked=true;
+		DBCheckBox13->Enabled=false;
+		DBCheckBox13->Checked=true;
+		DBCheckBox14->Enabled=false;
+		DBCheckBox14->Checked=true;
+	}
+	if (DBComboBox2->ItemIndex==2)
+	{
+		k7 = 0.9;
+		Edit28->Text = k7;//"0.9";
+		DBCheckBox1->Enabled=false;
+		DBCheckBox1->Checked=true;
+		DBCheckBox4->Enabled=false;
+		DBCheckBox4->Checked=true;
+		DBCheckBox5->Enabled=false;
+		DBCheckBox5->Checked=true;
+		DBCheckBox6->Enabled=false;
+		DBCheckBox6->Checked=true;
+		DBCheckBox7->Enabled=false;
+		DBCheckBox7->Checked=true;
+		DBCheckBox8->Enabled=false;
+		DBCheckBox8->Checked=true;
+		DBCheckBox9->Enabled=false;
+		DBCheckBox9->Checked=true;
+		DBCheckBox10->Enabled=false;
+		DBCheckBox10->Checked=true;
+		DBCheckBox11->Enabled=false;
+		DBCheckBox11->Checked=true;
+		DBCheckBox12->Enabled=false;
+		DBCheckBox12->Checked=true;
+		DBCheckBox13->Enabled=false;
+		DBCheckBox13->Checked=true;
+		DBCheckBox14->Enabled=false;
+		DBCheckBox14->Checked=true;
+	}
+	if (DBComboBox2->ItemIndex==3)
+	{
+		k7 = 0.85;
+		Edit28->Text = k7;//"0.85";
+		DBCheckBox1->Enabled=false;
+		DBCheckBox1->Checked=true;
+		DBCheckBox4->Enabled=false;
+		DBCheckBox4->Checked=true;
+		DBCheckBox5->Enabled=false;
+		DBCheckBox5->Checked=true;
+		DBCheckBox6->Enabled=false;
+		DBCheckBox6->Checked=true;
+		DBCheckBox7->Enabled=false;
+		DBCheckBox7->Checked=true;
+		DBCheckBox8->Enabled=false;
+		DBCheckBox8->Checked=true;
+		DBCheckBox9->Enabled=false;
+		DBCheckBox9->Checked=true;
+		DBCheckBox10->Enabled=false;
+		DBCheckBox10->Checked=true;
+		DBCheckBox11->Enabled=false;
+		DBCheckBox11->Checked=true;
+		DBCheckBox12->Enabled=false;
+		DBCheckBox12->Checked=true;
+		DBCheckBox13->Enabled=false;
+		DBCheckBox13->Checked=true;
+		DBCheckBox14->Enabled=false;
+		DBCheckBox14->Checked=true;
+	}
+	if (DBComboBox2->ItemIndex==4)
+	{
+		k7 = 0.80;
+		Edit28->Text = k7;//"0.8";
+		DBCheckBox1->Enabled=false;
+		DBCheckBox1->Checked=true;
+		DBCheckBox4->Enabled=false;
+		DBCheckBox4->Checked=true;
+		DBCheckBox5->Enabled=false;
+		DBCheckBox5->Checked=true;
+		DBCheckBox6->Enabled=false;
+		DBCheckBox6->Checked=true;
+		DBCheckBox7->Enabled=false;
+		DBCheckBox7->Checked=true;
+		DBCheckBox8->Enabled=false;
+		DBCheckBox8->Checked=true;
+		DBCheckBox9->Enabled=false;
+		DBCheckBox9->Checked=true;
+		DBCheckBox10->Enabled=false;
+		DBCheckBox10->Checked=true;
+		DBCheckBox11->Enabled=false;
+		DBCheckBox11->Checked=true;
+		DBCheckBox12->Enabled=false;
+		DBCheckBox12->Checked=true;
+		DBCheckBox13->Enabled=false;
+		DBCheckBox13->Checked=true;
+		DBCheckBox14->Enabled=false;
+		DBCheckBox14->Checked=true;
+	}
+	if (DBComboBox2->ItemIndex==5)
+	{
+		k7 = 0.75;
+		Edit28->Text = k7;;//"0.75";
+		DBCheckBox1->Enabled=false;
+		DBCheckBox1->Checked=true;
+		DBCheckBox4->Enabled=false;
+		DBCheckBox4->Checked=true;
+		DBCheckBox5->Enabled=false;
+		DBCheckBox5->Checked=true;
+		DBCheckBox6->Enabled=false;
+		DBCheckBox6->Checked=true;
+		DBCheckBox7->Enabled=false;
+		DBCheckBox7->Checked=true;
+		DBCheckBox8->Enabled=false;
+		DBCheckBox8->Checked=true;
+		DBCheckBox9->Enabled=false;
+		DBCheckBox9->Checked=true;
+		DBCheckBox10->Enabled=false;
+		DBCheckBox10->Checked=true;
+		DBCheckBox11->Enabled=false;
+		DBCheckBox11->Checked=true;
+		DBCheckBox12->Enabled=false;
+		DBCheckBox12->Checked=true;
+		DBCheckBox13->Enabled=false;
+		DBCheckBox13->Checked=true;
+		DBCheckBox14->Enabled=false;
+		DBCheckBox14->Checked=true;
+	}
+	if (DBComboBox2->ItemIndex==6)
+	{
+		k7 = 0.70;
+		Edit28->Text = k7;;//"0.7";
+		DBCheckBox1->Enabled=false;
+		DBCheckBox1->Checked=true;
+		DBCheckBox4->Enabled=false;
+		DBCheckBox4->Checked=true;
+		DBCheckBox5->Enabled=false;
+		DBCheckBox5->Checked=true;
+		DBCheckBox6->Enabled=false;
+		DBCheckBox6->Checked=true;
+		DBCheckBox7->Enabled=false;
+		DBCheckBox7->Checked=true;
+		DBCheckBox8->Enabled=false;
+		DBCheckBox8->Checked=true;
+		DBCheckBox9->Enabled=false;
+		DBCheckBox9->Checked=true;
+		DBCheckBox10->Enabled=false;
+		DBCheckBox10->Checked=true;
+		DBCheckBox11->Enabled=false;
+		DBCheckBox11->Checked=true;
+		DBCheckBox12->Enabled=false;
+		DBCheckBox12->Checked=true;
+		DBCheckBox13->Enabled=false;
+		DBCheckBox13->Checked=true;
+		DBCheckBox14->Enabled=false;
+		DBCheckBox14->Checked=true;
+	}
+	if (DBComboBox2->ItemIndex==7)
+	{
+		k7 = 0.60;
+		Edit28->Text = k7;;//"0.6";
+		DBCheckBox1->Enabled=false;
+		DBCheckBox1->Checked=true;
+		DBCheckBox4->Enabled=false;
+		DBCheckBox4->Checked=true;
+		DBCheckBox5->Enabled=false;
+		DBCheckBox5->Checked=true;
+		DBCheckBox6->Enabled=false;
+		DBCheckBox6->Checked=true;
+		DBCheckBox7->Enabled=false;
+		DBCheckBox7->Checked=true;
+		DBCheckBox8->Enabled=false;
+		DBCheckBox8->Checked=true;
+		DBCheckBox9->Enabled=false;
+		DBCheckBox9->Checked=true;
+		DBCheckBox10->Enabled=false;
+		DBCheckBox10->Checked=true;
+		DBCheckBox11->Enabled=false;
+		DBCheckBox11->Checked=true;
+		DBCheckBox12->Enabled=false;
+		DBCheckBox12->Checked=true;
+		DBCheckBox13->Enabled=false;
+		DBCheckBox13->Checked=true;
+		DBCheckBox14->Enabled=false;
+		DBCheckBox14->Checked=true;
+	}
+	if (DBComboBox2->ItemIndex==8)
+	{
+		k7 = 0.50;
+		Edit28->Text = k7;//"0.5";
+		DBCheckBox1->Enabled=false;
+		DBCheckBox1->Checked=true;
+		DBCheckBox4->Enabled=false;
+		DBCheckBox4->Checked=true;
+		DBCheckBox5->Enabled=false;
+		DBCheckBox5->Checked=true;
+		DBCheckBox6->Enabled=false;
+		DBCheckBox6->Checked=true;
+		DBCheckBox7->Enabled=false;
+		DBCheckBox7->Checked=true;
+		DBCheckBox8->Enabled=false;
+		DBCheckBox8->Checked=true;
+		DBCheckBox9->Enabled=false;
+		DBCheckBox9->Checked=true;
+		DBCheckBox10->Enabled=false;
+		DBCheckBox10->Checked=true;
+		DBCheckBox11->Enabled=false;
+		DBCheckBox11->Checked=true;
+		DBCheckBox12->Enabled=false;
+		DBCheckBox12->Checked=true;
+		DBCheckBox13->Enabled=false;
+		DBCheckBox13->Checked=true;
+		DBCheckBox14->Enabled=false;
+		DBCheckBox14->Checked=true;
+	}
+	if (DBComboBox2->ItemIndex==9)
+	{
+		k7 = 0.40;
+		Edit28->Text = k7;//"0.4";
+		DBCheckBox1->Enabled=false;
+		DBCheckBox1->Checked=true;
+		DBCheckBox4->Enabled=false;
+		DBCheckBox4->Checked=true;
+		DBCheckBox5->Enabled=false;
+		DBCheckBox5->Checked=true;
+		DBCheckBox6->Enabled=false;
+		DBCheckBox6->Checked=true;
+		DBCheckBox7->Enabled=false;
+		DBCheckBox7->Checked=true;
+		DBCheckBox8->Enabled=false;
+		DBCheckBox8->Checked=true;
+		DBCheckBox9->Enabled=false;
+		DBCheckBox9->Checked=true;
+		DBCheckBox10->Enabled=false;
+		DBCheckBox10->Checked=true;
+		DBCheckBox11->Enabled=false;
+		DBCheckBox11->Checked=true;
+		DBCheckBox12->Enabled=false;
+		DBCheckBox12->Checked=true;
+		DBCheckBox13->Enabled=false;
+		DBCheckBox13->Checked=true;
+		DBCheckBox14->Enabled=false;
+		DBCheckBox14->Checked=true;
+	}
+	if (DBComboBox2->ItemIndex==10)
+	{
+		k7 = 0.30;
+		Edit28->Text = k7;//"0.3";
+		DBCheckBox1->Enabled=false;
+		DBCheckBox1->Checked=true;
+		DBCheckBox4->Enabled=false;
+		DBCheckBox4->Checked=true;
+		DBCheckBox5->Enabled=false;
+		DBCheckBox5->Checked=true;
+		DBCheckBox6->Enabled=false;
+		DBCheckBox6->Checked=true;
+		DBCheckBox7->Enabled=false;
+		DBCheckBox7->Checked=true;
+		DBCheckBox8->Enabled=false;
+		DBCheckBox8->Checked=true;
+		DBCheckBox9->Enabled=false;
+		DBCheckBox9->Checked=true;
+		DBCheckBox10->Enabled=false;
+		DBCheckBox10->Checked=true;
+		DBCheckBox11->Enabled=false;
+		DBCheckBox11->Checked=true;
+		DBCheckBox12->Enabled=false;
+		DBCheckBox12->Checked=true;
+		DBCheckBox13->Enabled=false;
+		DBCheckBox13->Checked=true;
+		DBCheckBox14->Enabled=false;
+		DBCheckBox14->Checked=true;
+	}
+	if (DBComboBox2->ItemIndex==11)
+	{
+		k7 = 0.20;
+		Edit28->Text = k7;//"0.2";
+		DBCheckBox1->Enabled=false;
+		DBCheckBox1->Checked=true;
+		DBCheckBox4->Enabled=false;
+		DBCheckBox4->Checked=true;
+		DBCheckBox5->Enabled=false;
+		DBCheckBox5->Checked=true;
+		DBCheckBox6->Enabled=false;
+		DBCheckBox6->Checked=true;
+		DBCheckBox7->Enabled=false;
+		DBCheckBox7->Checked=true;
+		DBCheckBox8->Enabled=false;
+		DBCheckBox8->Checked=true;
+		DBCheckBox9->Enabled=false;
+		DBCheckBox9->Checked=true;
+		DBCheckBox10->Enabled=false;
+		DBCheckBox10->Checked=true;
+		DBCheckBox11->Enabled=false;
+		DBCheckBox11->Checked=true;
+		DBCheckBox12->Enabled=false;
+		DBCheckBox12->Checked=true;
+		DBCheckBox13->Enabled=false;
+		DBCheckBox13->Checked=true;
+		DBCheckBox14->Enabled=false;
+		DBCheckBox14->Checked=true;
+	}
+	if (DBComboBox2->ItemIndex==12)
+	{
+		k7 = 0.15;
+		Edit28->Text = k7;//"0.15";
+		DBCheckBox1->Enabled=false;
+		DBCheckBox1->Checked=true;
+		DBCheckBox4->Enabled=false;
+		DBCheckBox4->Checked=true;
+		DBCheckBox5->Enabled=false;
+		DBCheckBox5->Checked=true;
+		DBCheckBox6->Enabled=false;
+		DBCheckBox6->Checked=true;
+		DBCheckBox7->Enabled=false;
+		DBCheckBox7->Checked=true;
+		DBCheckBox8->Enabled=false;
+		DBCheckBox8->Checked=true;
+		DBCheckBox9->Enabled=false;
+		DBCheckBox9->Checked=true;
+		DBCheckBox10->Enabled=false;
+		DBCheckBox10->Checked=true;
+		DBCheckBox11->Enabled=false;
+		DBCheckBox11->Checked=true;
+		DBCheckBox12->Enabled=false;
+		DBCheckBox12->Checked=true;
+		DBCheckBox13->Enabled=false;
+		DBCheckBox13->Checked=true;
+		DBCheckBox14->Enabled=false;
+		DBCheckBox14->Checked=true;
+	}
+}//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBComboBox6Change(TObject *Sender)
+{
+	if (DBComboBox6->ItemIndex==0)
+	{
+		skid = 0;
+	}
+	if (DBComboBox6->ItemIndex==1)
+	{
+		skid = 5;
+	}
+	if (DBComboBox6->ItemIndex==2)
+	{
+		skid = 10;
+	}
+	if (DBComboBox6->ItemIndex==3)
+	{
+		skid = 15;
+	}
+	if (DBComboBox6->ItemIndex==4)
+	{
+		skid = 20;
+	}
+	if (DBComboBox6->ItemIndex==5)
+	{
+		skid = 25;
+	}
+	if (DBComboBox6->ItemIndex==6)
+	{
+		skid = 30;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBEdit6Change(TObject *Sender)
+{
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Nazv_tipa")->Value == "Мотоцикли та моторолери до 300 куб.см.")
+	{
+		k1 = 0.34;
+		Edit22->Text = k1;//"0.34";
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Nazv_tipa")->Value == "Мотоцикли та моторолери від 300 куб.см.")
+	{
+		k1 = 0.68;
+		Edit22->Text = k1;//"0.68";
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Nazv_tipa")->Value == "Легковий автомобіль до 1600 куб.см.")
+	{
+		k1 = 1.00;
+		Edit22->Text = k1;
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Nazv_tipa")->Value == "Легковий автомобіль від 1601 до 2000 куб.см.")
+	{
+		k1 = 1.14;
+		Edit22->Text = k1;//"1.14";
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Nazv_tipa")->Value == "Легковий автомобіль від 2001 до 3000 куб.см.")
+	{
+		k1 = 1.18;
+		Edit22->Text = k1;//"1.18";
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Nazv_tipa")->Value == "Легковий автомобіль від 3000 куб.см.")
+	{
+		k1 = 1.82;
+		Edit22->Text = k1;//"1.82";
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Nazv_tipa")->Value == "Вантажний автомобіль вантажопідйомністю до 2 тонн")
+	{
+		k1 = 2.00;
+		Edit22->Text = k1;
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Nazv_tipa")->Value == "Вантажний автомобіль вантажопідйомністю >2 тонн")
+	{
+		k1 = 2.15;
+		Edit22->Text = k1;//"2.15";
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Nazv_tipa")->Value == "Автобуси з кількістю місць для сидіння до 20 осіб")
+	{
+		k1 = 2.55;
+		Edit22->Text = k1;//"2.55";
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Nazv_tipa")->Value == "Автобуси з кількістю місць для сидіння >20 осіб")
+	{
+		k1 = 3.00;
+		Edit22->Text = k1;//"3";
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Nazv_tipa")->Value == "Причепи до легкових автомобілів")
+	{
+		k1 = 0.34;
+		Edit22->Text = k1;//"0.34";
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Nazv_tipa")->Value == "Причепи до вантажних автомобілів")
+	{
+		k1 = 0.50;
+		Edit22->Text = k1;//"0.5";
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBEdit7Change(TObject *Sender)
+{
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Kod_masta")->Value == "1")
+	{
+		k2 = 4.20;
+		Edit23->Text = k2;//"4.20";
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Kod_masta")->Value == "2")
+	{
+		k2 = 2.20;
+		Edit23->Text = k2;//"2.20";
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Kod_masta")->Value == "3")
+	{
+		k2 = 3.0;
+		Edit23->Text = k2;
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Kod_masta")->Value == "4")
+	{
+		k2 = 2.30;
+		Edit23->Text = k2;//"2.30";
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Kod_masta")->Value == "5")
+	{
+		k2 = 1.70;
+		Edit23->Text = k2;//"1.70";
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Kod_masta")->Value == "6")
+	{
+		k2 = 1.30;
+		Edit23->Text = k2;//"1.30";
+	}
+	if (DM->AVTO_KLIENTA_DataSet1->FieldByName("Kod_masta")->Value == "7")
+	{
+		k2 = 2.98;
+		Edit23->Text = k2;//"2.98";
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBEdit14Change(TObject *Sender)
+{
+	if (DM->KLIENT_DataSet2->FieldByName("TIP")->Value == "Фіз")
+	{
+		DBCheckBox2->Enabled = true;
+		DBCheckBox2->Checked = false;
+		DBComboBox9->Enabled = true;
+		DBComboBox9->Text = "";
+		k3 = 1.0;
+		Edit24->Text = k3;//"1";
+		k4 = 1.35;
+		Edit25->Text = k4;//"1.35";
+	}
+	if (DM->KLIENT_DataSet2->FieldByName("TIP")->Value == "Юр")
+	{
+		DBCheckBox2->Enabled = false;
+		DBCheckBox2->Checked = false;
+		DBComboBox9->Enabled = false;
+		DBComboBox9->Text = "Юридична особа";
+		DM->POLIS_DataSet5->FieldByName("STASH")->Value = DBComboBox9->Text;
+		k3 = 1.10;
+		Edit24->Text = k3;//"1.1";
+		k4 = 1.20;
+		Edit25->Text = k4;//"1.2";
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBComboBox5Change(TObject *Sender)
+{
+	if (DBComboBox5->ItemIndex==0)
+	{
+		bon_mal = 2.3;
+	}
+	if (DBComboBox5->ItemIndex==1)
+	{
+		bon_mal = 1.55;
+	}
+	if (DBComboBox5->ItemIndex==2)
+	{
+		bon_mal = 1.4;
+	}
+	if (DBComboBox5->ItemIndex==3)
+	{
+		bon_mal = 1;
+	}
+	if (DBComboBox5->ItemIndex==4)
+	{
+		bon_mal = 0.95;
+	}
+	if (DBComboBox5->ItemIndex==5)
+	{
+		bon_mal = 0.9;
+	}
+	if (DBComboBox5->ItemIndex==6)
+	{
+		bon_mal = 0.85;
+	}
+	if (DBComboBox5->ItemIndex==7)
+	{
+		bon_mal = 0.8;
+	}
+	if (DBComboBox5->ItemIndex==9)
+	{
+		bon_mal = 0.7;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DateTimePicker1Change(TObject *Sender)
+{
+	DBEdit2->Text=DateTimePicker1->Date;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DateTimePicker2Change(TObject *Sender)
+{
+	DBEdit3->Text=DateTimePicker1->Date;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DateTimePicker3Change(TObject *Sender)
+{
+	DBEdit4->Text=DateTimePicker1->Date;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DateTimePicker4Change(TObject *Sender)
+{
+	DBEdit20->Text=DateTimePicker1->Date;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBCheckBox2Click(TObject *Sender)
+{
+	if (DBCheckBox2->Checked==true)
+	{
+		k3 = 1.4;
+		Edit24->Text = k3;//"1.4";
+	}
+	if (DBCheckBox2->Checked==false)
+	{
+		k3 = 1.0;
+		Edit24->Text = k3;//"1";
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBCheckBox1Click(TObject *Sender)
+{
+	if (DBCheckBox1->Checked==true)
+	{
+		mes = mes + 1;
+		Edit1->Text = mes;
+	}
+	if (DBCheckBox1->Checked==false)
+	{
+		mes = mes - 1;
+		Edit1->Text = mes;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBCheckBox4Click(TObject *Sender)
+{
+	if (DBCheckBox4->Checked==true)
+	{
+		mes = mes + 1;
+		Edit1->Text = mes;
+	}
+	if (DBCheckBox4->Checked==false)
+	{
+		mes = mes - 1;
+		Edit1->Text = mes;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBCheckBox5Click(TObject *Sender)
+{
+	if (DBCheckBox5->Checked==true)
+	{
+		mes = mes + 1;
+		Edit1->Text = mes;
+	}
+	if (DBCheckBox5->Checked==false)
+	{
+		mes = mes - 1;
+		Edit1->Text = mes;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBCheckBox6Click(TObject *Sender)
+{
+	if (DBCheckBox6->Checked==true)
+	{
+		mes = mes + 1;
+		Edit1->Text = mes;
+	}
+	if (DBCheckBox6->Checked==false)
+	{
+		mes = mes - 1;
+		Edit1->Text = mes;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBCheckBox7Click(TObject *Sender)
+{
+	if (DBCheckBox7->Checked==true)
+	{
+		mes = mes + 1;
+		Edit1->Text = mes;
+	}
+	if (DBCheckBox7->Checked==false)
+	{
+		mes = mes - 1;
+		Edit1->Text = mes;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBCheckBox8Click(TObject *Sender)
+{
+	if (DBCheckBox8->Checked==true)
+	{
+		mes = mes + 1;
+		Edit1->Text = mes;
+	}
+	if (DBCheckBox8->Checked==false)
+	{
+		mes = mes - 1;
+		Edit1->Text = mes;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBCheckBox9Click(TObject *Sender)
+{
+	if (DBCheckBox9->Checked==true)
+	{
+		mes = mes + 1;
+		Edit1->Text = mes;
+	}
+	if (DBCheckBox9->Checked==false)
+	{
+		mes = mes - 1;
+		Edit1->Text = mes;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBCheckBox10Click(TObject *Sender)
+{
+	if (DBCheckBox10->Checked==true)
+	{
+		mes = mes + 1;
+		Edit1->Text = mes;
+	}
+	if (DBCheckBox10->Checked==false)
+	{
+		mes = mes - 1;
+		Edit1->Text = mes;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBCheckBox11Click(TObject *Sender)
+{
+	if (DBCheckBox11->Checked==true)
+	{
+		mes = mes + 1;
+		Edit1->Text = mes;
+	}
+	if (DBCheckBox11->Checked==false)
+	{
+		mes = mes - 1;
+		Edit1->Text = mes;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBCheckBox12Click(TObject *Sender)
+{
+	if (DBCheckBox12->Checked==true)
+	{
+		mes = mes + 1;
+		Edit1->Text = mes;
+	}
+	if (DBCheckBox12->Checked==false)
+	{
+		mes = mes - 1;
+		Edit1->Text = mes;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBCheckBox13Click(TObject *Sender)
+{
+	if (DBCheckBox13->Checked==true)
+	{
+		mes = mes + 1;
+		Edit1->Text = mes;
+	}
+	if (DBCheckBox13->Checked==false)
+	{
+		mes = mes - 1;
+		Edit1->Text = mes;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::DBCheckBox14Click(TObject *Sender)
+{
+	if (DBCheckBox14->Checked==true)
+	{
+		mes = mes + 1;
+		Edit1->Text = mes;
+	}
+	if (DBCheckBox14->Checked==false)
+	{
+		mes = mes - 1;
+		Edit1->Text = mes;
+	}
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm10::DBLookupComboBox1Click(TObject *Sender)
+{
+	DBEdit27->Text = DBEdit29->Text;
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm10::Button3Click(TObject *Sender)
+{
+	baz = StrToInt(DBEdit25->Text);
+	plat = baz*k1*k2*k3*k4*k5*k6*k7*bon_mal;
+	DBEdit5->Text = plat;
+	DBEdit22->Text = plat - (plat*(skid)/100);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm10::Edit1Change(TObject *Sender)
+{
+	if (mes == 12)
+	{
+		k5 = 1.0;
+		Edit26->Text = k5;
+	}
+	if (mes == 11)
+	{
+		k5 = 0.95;
+		Edit26->Text = k5;//"0.95";
+	}
+	if (mes == 10)
+	{
+		k5 = 0.9;
+		Edit26->Text = k5;//"0.9";
+	}
+	if (mes == 9)
+	{
+		k5 = 0.85;
+		Edit26->Text = k5;//"0.85";
+	}
+	if (mes == 8)
+	{
+		k5 = 0.8;
+		Edit26->Text = k5;//"0.8";
+	}
+	if (mes == 7)
+	{
+		k5 = 0.75;
+		Edit26->Text = k5;//"0.75";
+	}
+	if (mes == 6)
+	{
+		k5 = 0.7;
+		Edit26->Text = k5;//"0.7";
+	}
+	if (mes <= 5)
+	{
+		k5 = 0;
+		Edit26->Text = k5;//"0";
+	}
+}
+//---------------------------------------------------------------------------
+
+

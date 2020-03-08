@@ -1,0 +1,38 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit13H
+#define Unit13H
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include "Unit2.h"
+#include "frxClass.hpp"
+#include "frxDBSet.hpp"
+#include "frxPreview.hpp"
+#include "frxExportPDF.hpp"
+//---------------------------------------------------------------------------
+class TForm13 : public TForm
+{
+__published:	// IDE-managed Components
+	TfrxDBDataset *frxDBDataset1;
+	TfrxPreview *frxPreview1;
+	TfrxReport *frxReport1;
+	TfrxDBDataset *frxDBDataset2;
+	TfrxUserDataSet *frxUserDataSet1;
+	TEdit *Edit1;
+	TEdit *Edit2;
+	TfrxPDFExport *frxPDFExport1;
+	TButton *Button1;
+	void __fastcall frxUserDataSet1GetValue(const UnicodeString VarName, Variant &Value);
+	void __fastcall Button1Click(TObject *Sender);
+
+private:	// User declarations
+public:		// User declarations
+	__fastcall TForm13(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm13 *Form13;
+//---------------------------------------------------------------------------
+#endif

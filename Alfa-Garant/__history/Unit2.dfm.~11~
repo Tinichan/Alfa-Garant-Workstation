@@ -1,0 +1,137 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 384
+  Width = 474
+  object IBDatabase1: TIBDatabase
+    Connected = True
+    DatabaseName = 'C:\Users\timic\Desktop\Alfa-Garant\DATA'
+    Params.Strings = (
+      'user_name=SYSDBA'
+      'password=masterkey'
+      'lc_ctype=WIN1251')
+    LoginPrompt = False
+    DefaultTransaction = IBTransaction1
+    ServerType = 'IBServer'
+    Left = 200
+    Top = 24
+  end
+  object IBTransaction1: TIBTransaction
+    Active = True
+    DefaultDatabase = IBDatabase1
+    Left = 200
+    Top = 80
+  end
+  object AVTO_KLIENTAIBDataSet1: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    SelectSQL.Strings = (
+      'select * from AVTO_KLIENTA')
+    ParamCheck = True
+    UniDirectional = False
+    Left = 64
+    Top = 144
+  end
+  object IBDataSet2: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    SelectSQL.Strings = (
+      'select * from KLIENT')
+    ParamCheck = True
+    UniDirectional = False
+    Left = 152
+    Top = 144
+  end
+  object IBDataSet3: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    SelectSQL.Strings = (
+      'select * from MARKI')
+    ParamCheck = True
+    UniDirectional = False
+    Left = 240
+    Top = 144
+  end
+  object IBDataSet4: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    SelectSQL.Strings = (
+      'select * from MESTO_REG')
+    ParamCheck = True
+    UniDirectional = False
+    Left = 320
+    Top = 144
+  end
+  object IBDataSet5: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    SelectSQL.Strings = (
+      'select * from POLIS')
+    ParamCheck = True
+    UniDirectional = False
+    Left = 64
+    Top = 256
+  end
+  object IBDataSet6: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    SelectSQL.Strings = (
+      'select * from PREDSTAVNIKI')
+    ParamCheck = True
+    UniDirectional = False
+    Left = 152
+    Top = 256
+  end
+  object IBDataSet7: TIBDataSet
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    SelectSQL.Strings = (
+      'select * from TIPI_TZ')
+    ParamCheck = True
+    UniDirectional = False
+    Left = 240
+    Top = 256
+  end
+  object DataSource1: TDataSource
+    DataSet = AVTO_KLIENTAIBDataSet1
+    Left = 64
+    Top = 192
+  end
+  object DataSource2: TDataSource
+    Left = 152
+    Top = 192
+  end
+  object DataSource3: TDataSource
+    Left = 240
+    Top = 192
+  end
+  object DataSource4: TDataSource
+    Left = 320
+    Top = 192
+  end
+  object DataSource5: TDataSource
+    Left = 64
+    Top = 304
+  end
+  object DataSource6: TDataSource
+    Left = 152
+    Top = 304
+  end
+  object DataSource7: TDataSource
+    Left = 240
+    Top = 304
+  end
+end

@@ -1,0 +1,16 @@
+object DataModule2: TDataModule2
+  OldCreateOrder = False
+  Height = 264
+  Width = 474
+  object IBDatabase1: TIBDatabase
+    DatabaseName = 'C:\Users\timic\Desktop\Alfa-Garant\DATA'
+    Params.Strings = (
+      'user_name=SYSDBA'
+      'password=masterkey'
+      'lc_ctype=WIN1251')
+    LoginPrompt = False
+    ServerType = 'IBServer'
+    Left = 200
+    Top = 24
+  end
+end

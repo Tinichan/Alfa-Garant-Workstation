@@ -1,0 +1,72 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit1.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
+{
+Action=caFree;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::FormShow(TObject *Sender)
+{
+//TForm6 *Form6=new TForm6(this);
+//Form6->Show();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::N2Click(TObject *Sender)
+{
+ N2->Enabled=false;
+ TForm3 *Form3=new TForm3(this);//динамическое создание формы
+ Form3->Show();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::N3Click(TObject *Sender)
+{
+ N3->Enabled=false;
+ TForm4 *Form4=new TForm4(this);//динамическое создание формы
+ Form4->Show();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::N4Click(TObject *Sender)
+{
+ N4->Enabled=false;
+ TForm5 *Form5=new TForm5(this);//динамическое создание формы
+ Form5->Show();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::N5Click(TObject *Sender)
+{
+ N5->Enabled=false;
+ TForm7 *Form7=new TForm7(this);//динамическое создание формы
+ Form7->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::N6Click(TObject *Sender)
+{
+ N6->Enabled=false;
+ TForm9 *Form9=new TForm9(this);//динамическое создание формы
+ Form9->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::N7Click(TObject *Sender)
+{
+ N7->Enabled=false;
+ TForm11 *Form11=new TForm11(this);//динамическое создание формы
+ Form11->Show();
+}
+//---------------------------------------------------------------------------
+
