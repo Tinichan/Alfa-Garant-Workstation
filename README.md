@@ -21,7 +21,7 @@ This program "should" help the insurance agent with entering the data of the cli
 # 📷 Several screenshots
 
 ![Main menu](screenshots/Screenshot3.jpg)
-![Перечень клиентов](screenshots/Screenshot4.jpg)
+![List of clients](screenshots/Screenshot4.jpg)
 ![Editing the data of the client and his vehicle](screenshots/Screenshot2.jpg)
 ![Editing insurance policy data](screenshots/Screenshot1.jpg)
 
